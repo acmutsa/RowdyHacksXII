@@ -8,6 +8,14 @@ import NavBarLinksGrouper from "./NavBarLinksGrouper";
 import { Oswald } from "next/font/google";
 import { cn } from "@/lib/utils/client/cn";
 import { getUser } from "db/functions";
+import { Divide } from "lucide-react";
+import { Shadows_Into_Light } from "next/font/google";
+
+const shadows = Shadows_Into_Light({
+	weight: "400",
+	subsets: ["latin"],
+	variable: "--font-shadows-into-light",
+});
 
 const oswald = Oswald({
 	variable: "--font-oswald",
@@ -26,70 +34,62 @@ export default async function Navbar({ className }: NavbarProps) {
 		<div className="z-50 w-screen">
 			<div
 				className={cn(
-					`relative top-0 z-50 h-16 w-screen border-b border-b-border bg-nav ${oswald.variable}`,
+					`relative top-3 z-50 h-24 w-screen ${oswald.variable}`,
 					className,
-				)}
-			>
-				<div className="mx-auto grid h-full w-full max-w-7xl grid-flow-col grid-cols-2 px-2 sm:px-6 lg:max-w-full lg:px-8">
-					<div className="col-span-2 flex items-center justify-start gap-x-5">
-						<Link
-							href={"/"}
-							className="mr-5 flex items-center gap-x-2"
-						>
-							<Image
-								src={c.icon.svg}
-								alt={c.hackathonName + " Logo"}
-								width={32}
-								height={32}
-							/>
-							{/* <div className="bg-muted-foreground h-[45%] rotate-[25deg] w-[2px]" /> */}
-							<h2 className="font-oswald text-lg font-bold text-[#A7866A] dark:text-[#FEF2E6]">
-								{c.hackathonName}
-							</h2>
-						</Link>
-						<div className="col-span-2 hidden items-center justify-start gap-x-5 md:flex">
-							<NavBarLinksGrouper />
-						</div>
-					</div>
+				)}>
+				<div
+					className="relative w-full sm:h-18 md:h-20 bg-cover bg-center bg-no-repeat flex items-center"
+					style={{
+						backgroundImage: "url('/img/dash/menu/menu-bar.svg')",
+	
+					}}
+				>
+					<img
+						src="/img/dash/menu/pin1.png"
+						alt="pin"
+						className="absolute bottom-[20px] left-[95px] w-10 h-14 md:block hidden z-10"
+					/>
 
-					<div className="flex items-center justify-between space-x-2 md:justify-center">
-						<div className="hidden gap-x-4 md:flex">
+					<img
+						src="/img/dash/menu/pin4.png"
+						alt="pin"
+						className="absolute top-[8px] right-[160px] w-12 h-12 md:block hidden  z-10"
+					/>
+
+					<div className="relative z-20 w-full flex items-center justify-between px-20 md:px-24">
+						<div className="relative -right-[40px] hidden md:flex items-center gap-x-6 lg:gap-x-10">
+							<NavBarLinksGrouper />
+						
+						<div className="px-12"></div>
+						<div className="hidden md:flex items-center ">
 							{user ? (
-								<>
-									<Link
-										href={
-											registrationIsComplete
-												? "/dash"
-												: "/register"
-										}
+								<Link href={registrationIsComplete ? "/dash" : "/register"}>
+									<Button
+										variant={"outline"}
+										className="bg-nav hover:bg-background"
 									>
-										<Button
-											variant={"outline"}
-											className="bg-nav hover:bg-background"
-										>
-											{registrationIsComplete
-												? "Dashboard"
-												: "Complete Registration"}
-										</Button>
-									</Link>
-								</>
+										{registrationIsComplete
+											? "Dashboard"
+											: "Complete Registration"}
+									</Button>
+								</Link>
 							) : (
-								<>
-									<Link href={"/sign-in"}>
-										<Button
-											variant={"outline"}
-											className="bg-nav hover:bg-background"
-										>
+								<div
+									className="items-center flex gap-x-8 px-4 py-1 rounded-md">				
+									<Link href="/sign-in">
+										<span className={`text-2xl text-black  ${shadows.className}`}>
 											Sign In
-										</Button>
+										</span>
 									</Link>
-									<Link href={"/register"}>
-										<Button>Register</Button>
+									<Link href="/register">
+										<span className={`text-2xl text-black  ${shadows.className}`}>
+											Register
+										</span>
 									</Link>
-								</>
+								</div>
 							)}
+							</div>
 						</div>
-						<ProfileButton />
 					</div>
 				</div>
 			</div>

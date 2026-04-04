@@ -1,4 +1,10 @@
 import Link from "next/link";
+import { Shadows_Into_Light } from "next/font/google";
+
+const shadowsIntoLight = Shadows_Into_Light({
+  subsets: ["latin"],
+  weight: "400", // required (not a variable font)
+});
 
 interface NavbarItemProps {
 	link: string;
@@ -9,7 +15,7 @@ export default function NavbarItem({ children, link }: NavbarItemProps) {
 	return (
 		<Link
 			href={link}
-			className="text-sm text-muted-foreground hover:text-primary hover:underline"
+			className={`text-2xl text-black  ${shadowsIntoLight.className}`}
 		>
 			{children}
 		</Link>

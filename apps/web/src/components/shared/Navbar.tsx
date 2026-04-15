@@ -31,19 +31,23 @@ export default async function Navbar({ className }: NavbarProps) {
 	const registrationIsComplete =
 		user != null && (await getUser(user.id)) != undefined;
 	return (
-		<div className="z-50 w-screen">
+		<div className="z-50 w-screen"
+			style={{
+				backgroundImage: "url('/img/dash/menu/menu-bar.svg')",
+				backgroundPosition: "center",
+			}}
+		>
+
 			<div
 				className={cn(
 					`relative top-3 z-50 h-24 w-screen ${oswald.variable}`,
 					className,
 				)}>
+
 				<div
 					className="relative w-full sm:h-18 md:h-20 bg-cover bg-center bg-no-repeat flex items-center"
-					style={{
-						backgroundImage: "url('/img/dash/menu/menu-bar.svg')",
-	
-					}}
 				>
+
 					<img
 						src="/img/dash/menu/pin1.png"
 						alt="pin"
@@ -59,35 +63,35 @@ export default async function Navbar({ className }: NavbarProps) {
 					<div className="relative z-20 w-full flex items-center justify-between px-20 md:px-24">
 						<div className="relative -right-[40px] hidden md:flex items-center gap-x-6 lg:gap-x-10">
 							<NavBarLinksGrouper />
-						
-						<div className="px-12"></div>
-						<div className="hidden md:flex items-center ">
-							{user ? (
-								<Link href={registrationIsComplete ? "/dash" : "/register"}>
-									<Button
-										variant={"outline"}
-										className="bg-nav hover:bg-background"
-									>
-										{registrationIsComplete
-											? "Dashboard"
-											: "Complete Registration"}
-									</Button>
-								</Link>
-							) : (
-								<div
-									className="items-center flex gap-x-8 px-4 py-1 rounded-md">				
-									<Link href="/sign-in">
-										<span className={`text-2xl text-black  ${shadows.className}`}>
-											Sign In
-										</span>
+
+							<div className="px-12"></div>
+							<div className="hidden md:flex items-center ">
+								{user ? (
+									<Link href={registrationIsComplete ? "/dash" : "/register"}>
+										<Button
+											variant={"outline"}
+											className="bg-nav hover:bg-background"
+										>
+											{registrationIsComplete
+												? "Dashboard"
+												: "Complete Registration"}
+										</Button>
 									</Link>
-									<Link href="/register">
-										<span className={`text-2xl text-black  ${shadows.className}`}>
-											Register
-										</span>
-									</Link>
-								</div>
-							)}
+								) : (
+									<div
+										className="items-center flex gap-x-8 px-4 py-1 rounded-md">
+										<Link href="/sign-in">
+											<span className={`text-2xl text-black  ${shadows.className}`}>
+												Sign In
+											</span>
+										</Link>
+										<Link href="/register">
+											<span className={`text-2xl text-black  ${shadows.className}`}>
+												Register
+											</span>
+										</Link>
+									</div>
+								)}
 							</div>
 						</div>
 					</div>

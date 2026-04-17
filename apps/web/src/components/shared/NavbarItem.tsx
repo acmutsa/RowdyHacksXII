@@ -15,7 +15,8 @@ export default function NavbarItem({ children, link }: NavbarItemProps) {
 	return (
 		<Link
 			href={link}
-			className={`text-2xl text-black  ${shadowsIntoLight.className}`}
+			// className={`text-2xl text-black  ${shadowsIntoLight.className}`}
+			className={`text-sm sm:text-2xl md:text-3xl lg:text-4xl text-black  ${shadowsIntoLight.className}`}
 		>
 			{children}
 		</Link>

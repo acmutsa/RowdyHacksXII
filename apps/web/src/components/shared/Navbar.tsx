@@ -31,7 +31,7 @@ export default async function Navbar({ className }: NavbarProps) {
 	const registrationIsComplete =
 		user != null && (await getUser(user.id)) != undefined;
 	return (
-		<div className="z-50 w-screen"
+		<div className="relative z-50 w-screen overflow-x-hidden"
 			style={{
 				backgroundImage: "url('/img/dash/menu/menu-bar.svg')",
 				backgroundPosition: "center",
@@ -40,32 +40,33 @@ export default async function Navbar({ className }: NavbarProps) {
 
 			<div
 				className={cn(
-					`relative top-3 z-50 h-24 w-screen ${oswald.variable}`,
+					`top-3 z-50 h-16 sm:h-20 md:h-24 w-full ${oswald.variable}`,
 					className,
 				)}>
 
 				<div
-					className="relative w-full sm:h-18 md:h-20 bg-cover bg-center bg-no-repeat flex items-center"
+					className="w-full h-16 sm:h-18 md:h-20 bg-cover bg-center bg-no-repeat flex items-center"
 				>
 
 					<img
 						src="/img/dash/menu/pin1.png"
 						alt="pin"
-						className="absolute bottom-[20px] left-[95px] w-10 h-14 md:block hidden z-10"
-					/>
+						className="absolute bottom-0 w-8 h-12 sm:w-12 sm:h-16 sm:top-2 md:w-16 md:h-20 md:top-4 lg:w-20 lg:h-24 lg:top-2 z-10"
+
+/>
 
 					<img
 						src="/img/dash/menu/pin4.png"
 						alt="pin"
-						className="absolute top-[8px] right-[160px] w-12 h-12 md:block hidden  z-10"
+						className="absolute top-[10px] right-0  w-8 h-12 sm:w-12 sm:h-18 sm:top-4 md:w-16 md:h-20 md:top-3 lg:w-20 lg:h-[104px] lg:top-0 z-10"
 					/>
-
-					<div className="relative z-20 w-full flex items-center justify-between px-20 md:px-24">
-						<div className="relative -right-[40px] hidden md:flex items-center gap-x-6 lg:gap-x-10">
+					<div className="px-2 md:px-0 lg:px-2"></div>
+					<div className=" z-20 w-full flex items-center justify-between px-2 sm:px-6 md:px-12 lg:px-18">
+						<div className="flex items-center gap-x-2 md:gap-x-6 lg:gap-x-10">
+							<div className="relative sm:top-1 flex items-center gap-x-2 md:gap-x-6 lg:gap-x-10">
 							<NavBarLinksGrouper />
-
-							<div className="px-12"></div>
-							<div className="hidden md:flex items-center ">
+							</div>
+							<div className="absolute right-8 top-[18px] sm:right-10 md:right-[56px] md:top-6 lg:right-20 flex items-center whitespace-nowrap">
 								{user ? (
 									<Link href={registrationIsComplete ? "/dash" : "/register"}>
 										<Button
@@ -79,14 +80,14 @@ export default async function Navbar({ className }: NavbarProps) {
 									</Link>
 								) : (
 									<div
-										className="items-center flex gap-x-8 px-4 py-1 rounded-md">
+										className="items-center flex gap-x-2 md:gap-x-4 lg:gap-x-8 rounded-md">
 										<Link href="/sign-in">
-											<span className={`text-2xl text-black  ${shadows.className}`}>
+											<span className={`text-sm sm:text-2xl md:text-3xl lg:text-4xl text-black ${shadows.className}`}>
 												Sign In
 											</span>
 										</Link>
 										<Link href="/register">
-											<span className={`text-2xl text-black  ${shadows.className}`}>
+											<span className={`text-sm sm:text-2xl md:text-3xl lg:text-4xl text-black ${shadows.className}`}>
 												Register
 											</span>
 										</Link>

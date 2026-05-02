@@ -29,7 +29,6 @@ export default function FAQ() {
                                 </h1>
 
                             </div>
-                            {/* need to map out faq.json here */}
                             <div className="flex flex-col items-left justify-center w-[25cqw]">
                                 <h2 className={`font-bold text-[1.5cqw]  pr-[5cqw]  ${manuale.className}`}>
                                     What is RowdyHacks?
@@ -67,10 +66,8 @@ export default function FAQ() {
                                 delay: 0.75,
                                 ease: [0.2, 0.9, 0.2, 1],
                             }}
-                            viewport={{ once: false, amount: 0.5 }} />
+                            viewport={{ once: false, margin: "0px 0px -20% 0px" }} />
                         <div className="absolute top-[8%] flex flex-col items-center py-[6cqw] w-full gap-4 px-4 gap-y-1">
-                            {/* need to map out faq.json here */}
-
 
                             <div className="flex flex-col items-left justify-center w-[25cqw]">
                                 <h2 className={`font-bold text-[1.5cqw]  pr-[5cqw]  ${manuale.className}`}>

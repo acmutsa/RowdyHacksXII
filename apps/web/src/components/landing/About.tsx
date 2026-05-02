@@ -200,7 +200,7 @@ export default function About() {
 						<div className="absolute top-[35%] left-[10%] flex w-[80%] m-[4cqw] flex-col items-center gap-[0.6cqw] pt-[1.3cqw] rotate-[1deg]">
 							<motion.img src="/img/assets/classified.svg"
 								className="w-[55%] h-auto object-contain absolute -top-[95%] right-[8%] -rotate-[15deg]"
-								initial={{ scale: 0, y: -40, opacity: 0 }}
+								initial={{ scale: 0, y: -40, opacity: 0, rotate: 15 }}
 								whileInView={{
 									scale: [0.25, 3, 1],
 									y: [-80, 0],
@@ -212,7 +212,7 @@ export default function About() {
 									delay: 0.75,
 									ease: [0.2, 0.9, 0.2, 1],
 								}}
-								viewport={{ once: false, amount: 0.5 }}
+								viewport={{ once: false, margin: "0px 0px -20% 0px" }}
 							/>
 							<p className={`font-light text-center leading-tight  w-[65%] text-[3cqw] -rotate-[2deg] ${manuale.className}`}>
 								Whether you’ve a seasoned hackathon vet or you’re just getting started, you’ll feel right at home at RowdyHacks.

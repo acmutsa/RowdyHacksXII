@@ -28,7 +28,7 @@ export default function Hero() {
 						alt=""
 						className="w-full h-auto"
 					/>
-					<div className="absolute rotate-12 right-[3.2rem] bottom-[6.4rem] sm:right-[4.2rem] sm:bottom-[8.25rem] md:right-[5rem] md:bottom-[10rem] lg:right-[10rem] lg:bottom-[13.8rem] w-[25%] xl:pb-[7rem]">
+					<div className="absolute rotate-12 right-[3.2rem] bottom-[6.4rem] sm:right-[4.2rem] sm:bottom-[8.25rem] md:right-[5rem] md:bottom-[10rem] lg:right-[10rem] lg:bottom-[3.8rem] w-[25%] xl:pb-[7rem]">
 						<motion.img
 							src="img/assets/top-secret.svg"
 							alt=""

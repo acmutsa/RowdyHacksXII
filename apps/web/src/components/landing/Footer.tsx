@@ -56,7 +56,7 @@ export default function Footer() {
 						</Link>
 						<Link href="https://go.rowdyhacks.org/discord">
 							<Image
-								className="select-none invert"
+								className="select-none "
 								src="/img/assets/discord_icon.svg"
 								alt="Discord logo"
 								width={20}

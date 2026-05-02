@@ -53,7 +53,21 @@ export default function FAQ() {
 
                     <div className="relative flex w-[50%] justify-center  pt-[5%]">
                         <img src="/img/assets/FAQ.svg" className="w-[33cqw]" />
-                        <img src="/img/assets/classified.svg" className="w-[40%] h-auto object-contain absolute -top-[4%] right-[15%] rotate-[15deg]" />
+                        <motion.img src="/img/assets/classified.svg"
+                            className="w-[40%] h-auto object-contain absolute -top-[4%] right-[15%] rotate-[15deg]"
+                            initial={{ scale: 0, y: -40, opacity: 0, rotate: 15 }}
+                            whileInView={{
+                                scale: [0.25, 3, 1],
+                                y: [-80, 0],
+                                opacity: [0, 1, 1],
+
+                            }}
+                            transition={{
+                                duration: 0.5,
+                                delay: 0.75,
+                                ease: [0.2, 0.9, 0.2, 1],
+                            }}
+                            viewport={{ once: false, amount: 0.5 }} />
                         <div className="absolute top-[8%] flex flex-col items-center py-[6cqw] w-full gap-4 px-4 gap-y-1">
                             {/* need to map out faq.json here */}
 

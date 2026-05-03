@@ -9,7 +9,7 @@ export default function NavbarItem({ children, link }: NavbarItemProps) {
 	return (
 		<Link
 			href={link}
-			className=" text-sm sm:text-sm md:text-md lg:text-xl text-muted-foreground hover:text-primary hover:underline "
+			className=" text-sm sm:text-sm md:text-md lg:text-xl text-muted-foreground hover:text-primary hover:underline hover:text-red-800 "
 		>
 			{children}
 		</Link>

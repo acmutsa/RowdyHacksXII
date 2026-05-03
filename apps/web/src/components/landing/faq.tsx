@@ -23,8 +23,8 @@ export default function FAQ() {
 
                         <div className="absolute top-[8%] flex flex-col items-center w-full gap-4 px-4 gap-y-1">
                             <div className="flex flex-row items-stretch justify-center max-w-[1600px]">
-                                <img src="/img/assets/finger-print.svg" alt="" className="w-[2.5cqw] h-auto object-contain border border-r-0 border-black" />
-                                <h1 className={`text-center font-bold text-[2.5cqw] border border-black pl-[1cqw] pr-[20cqw]  ${manuale.className}`}>
+                                <img src="/img/assets/finger-print.svg" alt="" className="w-[3.5cqw] h-auto object-contain border border-r-0 border-black" />
+                                <h1 className={`text-center font-bold text-[3.5cqw] border border-black pl-[1cqw] pr-[15cqw]  ${manuale.className}`}>
                                     FAQ
                                 </h1>
 

@@ -1,26 +1,11 @@
-CREATE TABLE `chat_messages` (
+CREATE TABLE `banned_users` (
 	`id` integer PRIMARY KEY NOT NULL,
-	`chat_id` text NOT NULL,
-	`message` text NOT NULL,
-	`author_id` text NOT NULL,
-	`created_at` integer DEFAULT (current_timestamp) NOT NULL
-);
---> statement-breakpoint
-CREATE TABLE `chats` (
-	`id` text PRIMARY KEY NOT NULL,
-	`type` text NOT NULL,
-	`ticket_id` text,
-	`author` text NOT NULL,
+	`user_id` text(255) NOT NULL,
+	`reason` text,
 	`created_at` integer DEFAULT (current_timestamp) NOT NULL,
-	FOREIGN KEY (`ticket_id`) REFERENCES `tickets`(`id`) ON UPDATE no action ON DELETE no action
-);
---> statement-breakpoint
-CREATE TABLE `chats_to_users` (
-	`chat_id` text NOT NULL,
-	`user_id` text NOT NULL,
-	PRIMARY KEY(`user_id`, `chat_id`),
-	FOREIGN KEY (`chat_id`) REFERENCES `chats`(`id`) ON UPDATE no action ON DELETE no action,
-	FOREIGN KEY (`user_id`) REFERENCES `user_common_data`(`clerk_id`) ON UPDATE no action ON DELETE no action
+	`banned_by_id` text(255) NOT NULL,
+	FOREIGN KEY (`user_id`) REFERENCES `user_common_data`(`clerk_id`) ON UPDATE no action ON DELETE cascade,
+	FOREIGN KEY (`banned_by_id`) REFERENCES `user_common_data`(`clerk_id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
 CREATE TABLE `discord_verification` (
@@ -66,30 +51,21 @@ CREATE TABLE `files` (
 --> statement-breakpoint
 CREATE UNIQUE INDEX `files_id_unique` ON `files` (`id`);--> statement-breakpoint
 CREATE UNIQUE INDEX `files_key_unique` ON `files` (`key`);--> statement-breakpoint
-
+CREATE TABLE `roles` (
+	`id` integer PRIMARY KEY NOT NULL,
+	`name` text(50) NOT NULL,
+	`position` integer NOT NULL,
+	`permissions` integer NOT NULL,
+	`color` text(7)
+);
 --> statement-breakpoint
+CREATE UNIQUE INDEX `roles_name_unique` ON `roles` (`name`);--> statement-breakpoint
 CREATE TABLE `scans` (
 	`updated_at` integer DEFAULT (current_timestamp) NOT NULL,
 	`user_id` text(255) NOT NULL,
 	`event_id` integer NOT NULL,
 	`count` integer NOT NULL,
 	PRIMARY KEY(`user_id`, `event_id`)
-);
---> statement-breakpoint
-CREATE TABLE `tickets` (
-	`id` text PRIMARY KEY NOT NULL,
-	`title` text(255) NOT NULL,
-	`description` text NOT NULL,
-	`status` text DEFAULT 'awaiting' NOT NULL,
-	`created_at` integer DEFAULT (current_timestamp) NOT NULL
-);
---> statement-breakpoint
-CREATE TABLE `tickets_to_users` (
-	`ticket_id` text NOT NULL,
-	`user_id` text NOT NULL,
-	PRIMARY KEY(`user_id`, `ticket_id`),
-	FOREIGN KEY (`ticket_id`) REFERENCES `tickets`(`id`) ON UPDATE no action ON DELETE no action,
-	FOREIGN KEY (`user_id`) REFERENCES `user_common_data`(`clerk_id`) ON UPDATE no action ON DELETE no action
 );
 --> statement-breakpoint
 CREATE TABLE `user_common_data` (
@@ -115,10 +91,11 @@ CREATE TABLE `user_common_data` (
 	`is_fully_registered` integer DEFAULT false NOT NULL,
 	`signup_time` integer DEFAULT (current_timestamp) NOT NULL,
 	`is_searchable` integer DEFAULT true NOT NULL,
-	`role` text DEFAULT 'hacker' NOT NULL,
+	`role_id` integer NOT NULL,
 	`checkin_timestamp` integer,
 	`is_rsvped` integer DEFAULT false NOT NULL,
-	`is_approved` integer DEFAULT false NOT NULL
+	`is_approved` integer DEFAULT false NOT NULL,
+	FOREIGN KEY (`role_id`) REFERENCES `roles`(`id`) ON UPDATE no action ON DELETE no action
 );
 --> statement-breakpoint
 CREATE UNIQUE INDEX `user_common_data_email_unique` ON `user_common_data` (`email`);--> statement-breakpoint

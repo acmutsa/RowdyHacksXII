@@ -3,6 +3,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { cookies } from "next/headers";
 import { defaultTheme } from "config";
 
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({
 	children,
 }: {

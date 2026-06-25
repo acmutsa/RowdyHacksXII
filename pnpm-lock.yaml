@@ -155,7 +155,7 @@ importers:
         version: link:../../packages/db
       drizzle-orm:
         specifier: ^0.39.3
-        version: 0.39.3(@libsql/client@0.14.0)(@planetscale/database@1.18.0)
+        version: 0.39.3(@cloudflare/workers-types@4.20260625.1)(@libsql/client@0.14.0)(@planetscale/database@1.18.0)
       drizzle-zod:
         specifier: ^0.7.0
         version: 0.7.0(drizzle-orm@0.39.3)(zod@3.25.67)
@@ -244,6 +244,9 @@ importers:
         specifier: ^3.25.67
         version: 3.25.67
     devDependencies:
+      '@cloudflare/workers-types':
+        specifier: ^4.20260625.1
+        version: 4.20260625.1
       '@types/node':
         specifier: 20.14.11
         version: 20.14.11
@@ -279,7 +282,7 @@ importers:
         version: 5.5.3
       wrangler:
         specifier: ^4.59.2
-        version: 4.105.0
+        version: 4.105.0(@cloudflare/workers-types@4.20260625.1)
 
   packages/config:
     devDependencies:
@@ -297,7 +300,7 @@ importers:
         version: 16.4.5
       drizzle-orm:
         specifier: ^0.39.3
-        version: 0.39.3(@libsql/client@0.14.0)(@planetscale/database@1.18.0)
+        version: 0.39.3(@cloudflare/workers-types@4.20260625.1)(@libsql/client@0.14.0)(@planetscale/database@1.18.0)
       drizzle-zod:
         specifier: ^0.7.0
         version: 0.7.0(drizzle-orm@0.39.3)(zod@3.25.67)
@@ -2326,6 +2329,9 @@ packages:
     requiresBuild: true
     optional: true
 
+  /@cloudflare/workers-types@4.20260625.1:
+    resolution: {integrity: sha512-asH0RhPHiNu/IUSssyiOJYAcGqysy0DJpO9fihC6KATaayD9CE1E9bgNQozTLUraxrCT2qkM4CBOIcV0M5NPJw==}
+
   /@cspotcode/source-map-support@0.8.1:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
@@ -3999,7 +4005,7 @@ packages:
       glob: 12.0.0
       next: 14.2.35(react-dom@18.3.1)(react@18.3.1)
       ts-tqdm: 0.8.6
-      wrangler: 4.105.0
+      wrangler: 4.105.0(@cloudflare/workers-types@4.20260625.1)
       yargs: 18.0.0
     transitivePeerDependencies:
       - aws-crt
@@ -9283,7 +9289,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.39.3(@libsql/client@0.14.0)(@planetscale/database@1.18.0):
+  /drizzle-orm@0.39.3(@cloudflare/workers-types@4.20260625.1)(@libsql/client@0.14.0)(@planetscale/database@1.18.0):
     resolution: {integrity: sha512-EZ8ZpYvDIvKU9C56JYLOmUskazhad+uXZCTCRN4OnRMsL+xAJ05dv1eCpAG5xzhsm1hqiuC5kAZUCS924u2DTw==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -9369,6 +9375,7 @@ packages:
       sqlite3:
         optional: true
     dependencies:
+      '@cloudflare/workers-types': 4.20260625.1
       '@libsql/client': 0.14.0
       '@planetscale/database': 1.18.0
     dev: false
@@ -9379,7 +9386,7 @@ packages:
       drizzle-orm: '>=0.36.0'
       zod: '>=3.0.0'
     dependencies:
-      drizzle-orm: 0.39.3(@libsql/client@0.14.0)(@planetscale/database@1.18.0)
+      drizzle-orm: 0.39.3(@cloudflare/workers-types@4.20260625.1)(@libsql/client@0.14.0)(@planetscale/database@1.18.0)
       zod: 3.25.67
     dev: false
 
@@ -13099,7 +13106,7 @@ packages:
       '@cloudflare/workerd-linux-arm64': 1.20260625.1
       '@cloudflare/workerd-windows-64': 1.20260625.1
 
-  /wrangler@4.105.0:
+  /wrangler@4.105.0(@cloudflare/workers-types@4.20260625.1):
     resolution: {integrity: sha512-7dXFH6OLj1Fv0y6ZeRPUxFTkp+duWD7/xxVi/1c0vfOeEYwIFKWB7cdqnY05DvY1Ta3BnqAwRkXfLs8PDj538g==}
     engines: {node: '>=22.0.0'}
     hasBin: true
@@ -13111,6 +13118,7 @@ packages:
     dependencies:
       '@cloudflare/kv-asset-handler': 0.5.0
       '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260625.1)
+      '@cloudflare/workers-types': 4.20260625.1
       blake3-wasm: 2.1.5
       esbuild: 0.28.1
       miniflare: 4.20260625.0

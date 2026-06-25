@@ -21,6 +21,11 @@ const nextConfig = {
 		],
 	},
 	experimental: {
+		serverComponentsExternalPackages: [
+			"@libsql/client",
+			"@libsql/isomorphic-ws",
+			"@libsql/isomorphic-fetch",
+		],
 		serverActions: {
 			allowedOrigins: ["localhost:3000"],
 		},

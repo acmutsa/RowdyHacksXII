@@ -8,10 +8,9 @@ export default async function Page() {
 
 	const userTimeZone = getClientTimeZone(c.hackathonTimezone);
 	return (
-		<>
-			<h1 className="mx-auto my-8 w-3/4 text-8xl font-black">Schedule</h1>
+		<main className="max-w-full overflow-hidden py-4 md:pt-8">
 			<ScheduleTimeline schedule={sched} timezone={userTimeZone} />
-		</>
+		</main>
 	);
 }
 

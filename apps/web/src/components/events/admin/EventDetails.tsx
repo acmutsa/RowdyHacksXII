@@ -4,25 +4,30 @@ import Balancer from "react-wrap-balancer";
 import { formatInTimeZone } from "date-fns-tz";
 import { Event } from "db/types";
 import { getClientTimeZone } from "@/lib/utils/client/shared";
+import Link from "next/link";
 
 export default function EventFull({ event }: { event: Event }) {
 	const userTimeZone = getClientTimeZone(c.hackathonTimezone);
 
 	return (
-		<div className="relative w-screen">
-			<div
-				className="absolute top-0 h-[45vh] max-h-[400px] w-screen opacity-10 dark:opacity-50"
+		<main className="relative mx-auto flex min-h-[calc(100vh-7rem)] w-full max-w-5xl items-start justify-center px-3 py-10 sm:px-6 md:py-16">
+			<article
+				className="relative w-full bg-[length:100%_100%] bg-center bg-no-repeat px-[10%] py-[12%] font-serif text-black drop-shadow-[6px_8px_3px_rgba(0,0,0,0.45)] sm:px-[12%] sm:py-[10%] md:px-[14%]"
 				style={{
-					backgroundImage: `linear-gradient(180deg, ${
-						(c.eventTypes as Record<string, string>)[event.type] ||
-						c.eventTypes.Other
-					}, transparent)`,
+					backgroundImage:
+						"url('/img/assets/dash/have-questions-background.webp')",
 				}}
-			/>
-			<div className="relative z-10 mx-auto min-h-[calc(100vh-7rem)] w-full max-w-3xl p-2 pt-[15vh]">
-				<div className="mb-2 flex items-center gap-x-2">
+			>
+				<Link
+					href="/schedule"
+					className="mb-6 inline-block text-sm font-bold underline decoration-1 underline-offset-4 hover:text-[#ac1703]"
+				>
+					← Back to schedule
+				</Link>
+
+				<div className="mb-3 flex flex-wrap items-center gap-2">
 					<Badge
-						className="text-md"
+						className="bg-transparent text-sm text-black"
 						variant={"outline"}
 						style={{
 							borderColor:
@@ -33,7 +38,7 @@ export default function EventFull({ event }: { event: Event }) {
 					>
 						{event.type}
 					</Badge>
-					<p className="text-xs font-bold md:text-sm">{`${formatInTimeZone(
+					<p className="text-sm font-bold md:text-base">{`${formatInTimeZone(
 						event.startTime,
 						userTimeZone,
 						"EEEE MMMM do",
@@ -44,22 +49,24 @@ export default function EventFull({ event }: { event: Event }) {
 					)} - ${formatInTimeZone(event.endTime, userTimeZone, "h:mm a")}`}</p>
 				</div>
 
-				<h1 className="mb-2 text-7xl font-black">
+				<h1 className="mb-3 text-4xl font-black leading-none sm:text-5xl md:text-7xl">
 					<Balancer>{event.title}</Balancer>
 				</h1>
-				<h2 className="mb-20 text-lg font-bold">
-					Hosted by {event.host}
-				</h2>
-				<h3 className="mb-2 font-bold">
+				{event.host && (
+					<h2 className="mb-10 text-base font-bold sm:mb-14 sm:text-lg">
+						Hosted by {event.host}
+					</h2>
+				)}
+				<h3 className="mb-5 text-base font-bold sm:text-lg">
 					Location:{" "}
 					<span className="font-normal">{event.location}</span>
 				</h3>
 
-				<h3 className="mb-2 font-bold">Description:</h3>
-				<p>
+				<h3 className="mb-2 text-base font-bold sm:text-lg">Description:</h3>
+				<p className="text-base leading-relaxed sm:text-lg">
 					<Balancer>{event.description}</Balancer>
 				</p>
-			</div>
-		</div>
+			</article>
+		</main>
 	);
 }

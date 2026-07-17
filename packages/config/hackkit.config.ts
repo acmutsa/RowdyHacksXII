@@ -72,11 +72,11 @@ const c = {
 		Mastermind: {
 			discordRole: "Mastermind",
 		},
-		"Getaway Driver": {
-			discordRole: "Getaway Driver",
+		GetawayDriver: {
+			discordRole: "GetawayDriver",
 		},
-		"Inside Man": {
-			discordRole: "Inside Man",
+		InsideMan: {
+			discordRole: "InsideMan",
 		},
 	},
 	issueEmail: "team@rowdyhacks.org",

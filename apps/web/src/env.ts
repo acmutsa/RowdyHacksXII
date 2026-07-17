@@ -4,8 +4,8 @@ import { z } from "zod";
 export const env = createEnv({
 	server: {
 		CLERK_SECRET_KEY: z.string(),
-		INTERNAL_AUTH_KEY: z.string().min(64, {
-			message: "INTERNAL_AUTH_KEY must be at least 64 characters",
+		SHARED_SECRET: z.string().min(64, {
+			message: "SHARED_SECRET must be at least 64 characters",
 		}),
 		BOT_API_URL: z.string(),
 		NODE_ENV: z

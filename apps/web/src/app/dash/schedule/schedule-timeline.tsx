@@ -47,7 +47,7 @@ export default function ScheduleTimeline({
 		<>
 			<section aria-label="Hackathon schedule" className="relative w-full items-center justify-center py-[12cqw] sm:py-[3cqw] md:py-[5cqw] [container-type:inline-size]">
 
-				<Pin className="absolute left-[-10%] top-[30%] z-40" no_img size={1} />
+
 
 				<div className={`relative w-full h-auto hidden md:block px-[5cqw] ${manuale.className}`}>
 					<PaperPins />

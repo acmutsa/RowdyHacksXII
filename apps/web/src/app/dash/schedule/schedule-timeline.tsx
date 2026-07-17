@@ -1,32 +1,35 @@
-import { Badge } from "@/components/shadcn/ui/badge";
 import { type EventType as Event } from "@/lib/types/events";
-import { cn } from "@/lib/utils/client/cn";
-import c from "config";
+import Pin from "@/components/landing/Pin";
 import { formatInTimeZone } from "date-fns-tz";
 import Link from "next/link";
-import { ReactNode } from "react";
+import { Manuale, Shadows_Into_Light } from "next/font/google";
 
-const daysOfWeek = [
-	"Sunday",
-	"Monday",
-	"Tuesday",
-	"Wednesday",
-	"Thursday",
-	"Friday",
-	"Saturday",
-];
+const manuale = Manuale({
+	subsets: ["latin"],
+	display: "swap",
+});
+const shadow = Shadows_Into_Light({
+	subsets: ["latin"],
+	weight: "400",
+});
 
-function splitByDay(schedule: Event[]) {
-	const days: Map<string, Event[]> = new Map<string, Event[]>();
-	schedule.forEach((event) => {
-		const day = daysOfWeek[event.startTime.getDay()];
-		if (days.get(day)) {
-			days.get(day)?.push(event);
-		} else {
-			days.set(day, [event]);
-		}
-	});
-	return days;
+function splitByDay(schedule: Event[], timezone: string) {
+	const days = new Map<string, Event[]>();
+
+	for (const event of schedule) {
+		const day = formatInTimeZone(event.startTime, timezone, "EEEE");
+		days.set(day, [...(days.get(day) ?? []), event]);
+	}
+
+	return Array.from(days.entries()).map(
+		([day, events]) =>
+			[
+				day,
+				[...events].sort(
+					(a, b) => a.startTime.getTime() - b.startTime.getTime(),
+				),
+			] as const,
+	);
 }
 
 type ScheduleTimelineProps = {
@@ -38,113 +41,126 @@ export default function ScheduleTimeline({
 	schedule,
 	timezone,
 }: ScheduleTimelineProps) {
+	const days = splitByDay(schedule, timezone);
+
 	return (
-		<div className="mx-auto mt-5 w-3/4">
-			<table className="p-4">
-				<tbody>
-					{Array.from(splitByDay(schedule).entries()).map(
-						([dayName, arr]): ReactNode => (
-							<>
-								<tr key={dayName + " title"} className="py-8">
-									<td></td>
-									<td
-										className="w-1"
-										style={{
-											// background: `radial-gradient(circle, hsl(var(--background)) 0%, hsl(var(--secondary)) 90%)`,
-											backgroundColor: `hsl(var(--secondary))`,
-										}}
-									></td>
-									<td>
-										<h2 className="ml-16 w-full border-b py-4 text-6xl font-black">
-											{dayName}
-										</h2>
-									</td>
-								</tr>
-								{arr?.map(
-									(event): ReactNode => (
-										<EventRow
-											event={event}
-											userTimeZone={timezone}
-										/>
-									),
-								)}
-							</>
-						),
-					)}
-				</tbody>
-			</table>
+		<>
+			<section aria-label="Hackathon schedule" className="relative w-full items-center justify-center py-[12cqw] sm:py-[3cqw] md:py-[5cqw] [container-type:inline-size]">
+
+
+
+				<div className={`relative w-full h-auto hidden md:block px-[5cqw] ${manuale.className}`}>
+					<PaperPins />
+					<div className="absolute inset-0 -z-10 overflow-hidden drop-shadow-[6px_8px_3px_rgba(0,0,0,0.45)]">
+						<img
+							src="/img/assets/dash/schedule-desktop-background.webp"
+							alt=""
+							aria-hidden
+							className="w-full h-auto"
+						/>
+					</div>
+
+					<div className="w-full h-auto grid grid-cols-2 gap-[5cqw] px-[6cqw] py-[10cqw]">
+						{days.map(([day, events]) => (
+							<DaySchedule
+								key={day}
+								day={day}
+								events={events}
+								timezone={timezone}
+							/>
+						))}
+					</div>
+				</div>
+
+				{days.map(([day, events]) => (
+					<div className={`pb-[15cqw] md:hidden px-[5cqw] ${manuale.className}`}>
+						<div key={day} className="relative w-full h-auto" >
+							<PaperPins />
+
+							<div className="absolute inset-0 -z-10 overflow-hidden drop-shadow-[6px_8px_3px_rgba(0,0,0,0.45)]">
+								<img
+									src="/img/assets/dash/schedule-phone-background.webp"
+									alt=""
+									aria-hidden
+									className="w-full h-auto"
+								/>
+							</div>
+
+							<div className="w-full h-auto pl-[6cqw] pr-[12cqw] py-[15cqw] text-black">
+								<DaySchedule
+									day={day}
+									events={events}
+									timezone={timezone}
+								/>
+							</div>
+
+						</div>
+					</div>
+				))}
+
+			</section>
+		</>
+	);
+}
+
+function PaperPins() {
+	return (
+		<>
+			<Pin className="absolute left-[8%] top-[3%] z-40 " />
+			<Pin className="absolute right-[50%] top-[2%] z-40 " />
+			<Pin className="absolute right-[5%] top-[7%] z-40 " />
+			<Pin className="absolute right-[1%] top-[90%] z-40 md:hidden" />
+		</>
+	);
+}
+
+type DayScheduleProps = {
+	day: string;
+	events: Event[];
+	timezone: string;
+};
+
+function DaySchedule({ day, events, timezone }: DayScheduleProps) {
+	return (
+		<div>
+			<h2 className="mb-3 text-center text-xl font-bold sm:text-2xl md:mb-5 md:text-[clamp(1.35rem,1.8vw,2rem)]">
+				{day}
+			</h2>
+			<div className="border border-black/70">
+				{events.map((event) => (
+					<EventRow
+						key={event.id}
+						event={event}
+						timezone={timezone}
+					/>
+				))}
+			</div>
 		</div>
 	);
 }
 
-type EventRowProps = { event: Event; userTimeZone: string };
-export function EventRow({ event, userTimeZone }: EventRowProps) {
-	const startTimeFormatted = formatInTimeZone(
-		event.startTime,
-		userTimeZone,
-		"hh:mm a",
-		{
-			useAdditionalDayOfYearTokens: true,
-		},
-	);
+function EventRow({ event, timezone }: { event: Event; timezone: string }) {
+	const startTime = formatInTimeZone(event.startTime, timezone, "hh:mm a");
 
-	const endTimeFormatted = formatInTimeZone(
-		event.endTime,
-		userTimeZone,
-		"h:mm a",
-	);
-
-	const currentTime = new Date();
-	const isLive = event.startTime < currentTime && event.endTime > currentTime;
-
-	const href = `/schedule/${event.id}`;
-	const color = (c.eventTypes as Record<string, string>)[event.type];
 	return (
-		<Link href={href} legacyBehavior>
-			<tr className="cursor-pointer text-center text-xl text-foreground">
-				<td className="pr-16">{`${startTimeFormatted} - ${endTimeFormatted}`}</td>
-				<td
-					className={"relative h-20 w-1"}
-					style={{
-						background: `radial-gradient(circle, ${color} 0%, hsl(var(--secondary)) 99%)`,
-						// backgroundColor: color,
-					}}
+		<Link
+			href={`/schedule/${event.id}`}
+			className="group grid grid-cols-7 text-[0.72rem] sm:text-[0.8rem] md:text-[clamp(0.72rem,0.9vw,1rem)]"
+		>
+			<time className="flex items-start justify-center border-r border-black/60 col-span-2 px-2 py-2 md:px-3 md:py-3">
+				{startTime}
+			</time>
+			<p className="col-span-5 w-full px-2 py-2 transition-colors group-hover:bg-black/5 md:px-3 md:py-3">
+				<strong className="block text-[1.14em] leading-none">
+					{event.title}
+				</strong>
+				<span
+					title={event.description}
+					className="mt-0.5 w-full overflow-hidden text-ellipsis break-words opacity-90 [-webkit-box-orient:vertical] [-webkit-line-clamp:2] [display:-webkit-box]"
 				>
-					{isLive ? (
-						<div
-							className={cn(
-								"pulsatingDot absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full",
-							)}
-							style={{
-								backgroundColor: color,
-							}}
-						/>
-					) : (
-						<div
-							className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full"
-							style={{
-								backgroundColor: color,
-							}}
-						>
-							<div className="absolute inset-1 h-2 w-2 rounded-full bg-background"></div>
-						</div>
-					)}
-				</td>
-				<td className="pl-16">
-					<div className="flex flex-wrap items-center justify-start gap-x-2 text-left text-3xl">
-						{event.title}{" "}
-						<Badge
-							variant={"outline"}
-							className="h-fit"
-							style={{
-								borderColor: color,
-							}}
-						>
-							<p className="text-sm">{event.type}</p>
-						</Badge>
-					</div>
-				</td>
-			</tr>
+					{event.description}
+				</span>
+			</p>
 		</Link>
 	);
 }

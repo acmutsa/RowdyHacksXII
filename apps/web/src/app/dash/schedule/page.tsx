@@ -3,14 +3,18 @@ import { getAllEvents } from "db/functions";
 import { getClientTimeZone } from "@/lib/utils/client/shared";
 import c from "config";
 
+import LandingThread from "@/components/landing/LandingThread";
+
 export default async function Page() {
 	const sched = await getAllEvents();
 
 	const userTimeZone = getClientTimeZone(c.hackathonTimezone);
 	return (
 		<>
-			<h1 className="mx-auto my-8 w-3/4 text-8xl font-black">Schedule</h1>
-			<ScheduleTimeline schedule={sched} timezone={userTimeZone} />
+			<LandingThread />
+			<main className="mx-auto w-full max-w-[1536px]">
+				<ScheduleTimeline schedule={sched} timezone={userTimeZone} />
+			</main>
 		</>
 	);
 }

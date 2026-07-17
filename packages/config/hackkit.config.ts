@@ -21,7 +21,7 @@ const c = {
 	defaultMetaDataDescription: "Your Metadata Description Here",
 	rsvpDefaultLimit: 500,
 	botName: "HackKit",
-	botParticipantRole: "Participant",
+	botParticipantRole: "RHXII Participant",
 	hackathonTimezone: "America/Chicago",
 	localUniversityName: schoolOptions[0],
 	localUniversitySchoolIDName: "UTSA id (abc123)",

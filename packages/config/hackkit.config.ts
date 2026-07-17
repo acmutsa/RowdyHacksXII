@@ -17,7 +17,7 @@ const defaultTheme = "dark";
 const c = {
 	hackathonName: "HackKit",
 	itteration: "I",
-	siteUrl: "http://localhost:3000", // Do not have a trailing slash
+	siteUrl: "https://rowdyhacks.org", // Do not have a trailing slash
 	defaultMetaDataDescription: "Your Metadata Description Here",
 	rsvpDefaultLimit: 500,
 	botName: "HackKit",
@@ -66,40 +66,22 @@ const c = {
 		},
 	},
 	groups: {
-		"Guild A | Group A": {
-			discordRole: "Group A",
+		SafeCracker: {
+			discordRole: "SafeCracker",
 		},
-		"Guild A | Group B": {
-			discordRole: "Group A",
+		Mastermind: {
+			discordRole: "Mastermind",
 		},
-		"Guild B | Group A": {
-			discordRole: "Group B",
+		"Getaway Driver": {
+			discordRole: "Getaway Driver",
 		},
-		"Guild B | Group B": {
-			discordRole: "Group B",
-		},
-		"Guild C | Group A": {
-			discordRole: "Group C",
-		},
-		"Guild C | Group B": {
-			discordRole: "Group C",
-		},
-		"Guild D | Group A": {
-			discordRole: "Group D",
-		},
-		"Guild D | Group B": {
-			discordRole: "Group D",
-		},
-		"Guild E | Group A": {
-			discordRole: "Group E",
-		},
-		"Guild E | Group B": {
-			discordRole: "Group E",
+		"Inside Man": {
+			discordRole: "Inside Man",
 		},
 	},
 	issueEmail: "team@rowdyhacks.org",
 	links: {
-		discord: "https://go.rowdyhacks.org/discord",
+		discord: "https://discord.gg/C6DwwSYDN5",
 		instagram: "https://instagram.com/rowdyhacks",
 		facebook: "https://facebook.com/rowdyhacks",
 		twitter: "https://twitter.com/rowdyhacks",

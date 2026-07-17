@@ -1,4 +1,3 @@
-import { ne } from "db";
 import { NextFunction, Request, Response } from "express";
 import fs from "node:fs";
 import path from "node:path";

@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
-import { db } from "db";
-import { eq } from "db/drizzle";
-import { discordVerification } from "db/schema";
-import { getHacker } from "db/functions";
+import { db, eq } from "db/node";
+import { discordVerification, userCommonData } from "db/schema";
 import c from "config";
 import { RequestWithClient } from "../utils/loaders";
 
@@ -25,7 +23,10 @@ export async function handler(req: RequestWithClient, res: Response) {
 			return res.json({ success: false });
 		}
 
-		const user = await getHacker(verification.clerkID);
+		const user = await db.query.userCommonData.findFirst({
+			where: eq(userCommonData.clerkID, verification.clerkID),
+			with: { hackerData: true, role: true },
+		});
 		if (!user) {
 			console.log("failed cause of no user in db");
 			return res.json({ success: false });

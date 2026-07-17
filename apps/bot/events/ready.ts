@@ -1,4 +1,4 @@
-import { db } from "db";
+import { db } from "db/node";
 import { discordVerification } from "db/schema";
 import { REST, Routes } from "discord.js";
 

@@ -1,12 +1,14 @@
-import { db, asc, desc, eq } from "..";
-import {
-	eventEditType,
-	eventInsertType,
-	getAllEventsOptions,
-} from "../../../apps/web/src/lib/types/events";
+import { db, asc, desc, eq, type InferInsertModel } from "..";
 import { events } from "../schema";
 
-export function createNewEvent(event: eventInsertType) {
+type EventInsertType = InferInsertModel<typeof events>;
+type EventEditType = Omit<EventInsertType, "id">;
+
+interface GetAllEventsOptions {
+	descending?: boolean;
+}
+
+export function createNewEvent(event: EventInsertType) {
 	return db
 		.insert(events)
 		.values({
@@ -17,7 +19,7 @@ export function createNewEvent(event: eventInsertType) {
 		});
 }
 
-export function getAllEvents(options?: getAllEventsOptions) {
+export function getAllEvents(options?: GetAllEventsOptions) {
 	const orderByClause = options?.descending
 		? [desc(events.startTime)]
 		: [asc(events.startTime)];
@@ -31,7 +33,7 @@ export async function getEventById(eventId: number) {
 	return db.query.events.findFirst({ where: eq(events.id, eventId) });
 }
 
-export async function editEvent(eventId: number, options: eventEditType) {
+export async function editEvent(eventId: number, options: EventEditType) {
 	return db.update(events).set(options).where(eq(events.id, eventId));
 }
 export async function deleteEvent(eventId: number) {

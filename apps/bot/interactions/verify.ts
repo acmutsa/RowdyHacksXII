@@ -1,5 +1,5 @@
 import c from "config";
-import { db } from "db";
+import { db } from "db/node";
 import { discordVerification } from "db/schema";
 import { nanoid } from "nanoid";
 

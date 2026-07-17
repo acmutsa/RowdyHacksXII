@@ -4,6 +4,7 @@ import { getClientTimeZone } from "@/lib/utils/client/shared";
 import c from "config";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/landing/Footer";
+import LandingThread from "@/components/landing/LandingThread";
 
 export default async function Page() {
 	const sched = await getAllEvents();
@@ -11,10 +12,10 @@ export default async function Page() {
 	return (
 		<main className="max-w-full overflow-hidden pt-4 md:pt-8">
 			<Navbar />
-			<div className="mb-5 mt-12 px-4 md:px-0">
+			<LandingThread />
+			<main className="mx-auto w-full max-w-[1536px]">
 				<ScheduleTimeline schedule={sched} timezone={userTimeZone} />
-			</div>
-			<Footer />
+			</main>
 		</main>
 	);
 }

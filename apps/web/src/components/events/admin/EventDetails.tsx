@@ -5,22 +5,32 @@ import { formatInTimeZone } from "date-fns-tz";
 import { Event } from "db/types";
 import { getClientTimeZone } from "@/lib/utils/client/shared";
 import Link from "next/link";
+import { Manuale, Shadows_Into_Light } from "next/font/google";
+
+const manuale = Manuale({
+	subsets: ["latin"],
+	display: "swap",
+});
+const shadow = Shadows_Into_Light({
+	subsets: ["latin"],
+	weight: "400",
+});
 
 export default function EventFull({ event }: { event: Event }) {
 	const userTimeZone = getClientTimeZone(c.hackathonTimezone);
 
 	return (
-		<main className="relative mx-auto flex min-h-[calc(100vh-7rem)] w-full max-w-5xl items-start justify-center px-3 py-10 sm:px-6 md:py-16">
+		<main className={`relative mx-auto flex min-h-[calc(100vh-7rem)] w-full max-w-5xl items-start justify-center px-3 py-10 sm:px-6 md:py-16 ${manuale.className}`}>
 			<article
 				className="relative w-full bg-[length:100%_100%] bg-center bg-no-repeat px-[10%] py-[12%] font-serif text-black drop-shadow-[6px_8px_3px_rgba(0,0,0,0.45)] sm:px-[12%] sm:py-[10%] md:px-[14%]"
 				style={{
 					backgroundImage:
-						"url('/img/assets/dash/have-questions-background.webp')",
+						"url('/img/assets/dash/empty-paper.webp')",
 				}}
 			>
 				<Link
 					href="/schedule"
-					className="mb-6 inline-block text-sm font-bold underline decoration-1 underline-offset-4 hover:text-[#ac1703]"
+					className={`mb-6 inline-block text-lg font-bold hover:underline decoration-1 underline-offset-2 text-[#ac1703] ${shadow.className}`}
 				>
 					← Back to schedule
 				</Link>
@@ -32,7 +42,7 @@ export default function EventFull({ event }: { event: Event }) {
 						style={{
 							borderColor:
 								(c.eventTypes as Record<string, string>)[
-									event.type
+								event.type
 								] || c.eventTypes.Other,
 						}}
 					>

@@ -9,6 +9,7 @@ import { modifyAccountSettings } from "@/actions/user-profile-mod";
 import { Checkbox } from "@/components/shadcn/ui/checkbox";
 import { Loader2 } from "lucide-react";
 import { isProfane } from "no-profanity";
+import FormGroupWrapper from "@/components/registration/FormGroupWrapper";
 import { modifyAccountSettingsSchema } from "@/validators/settings";
 import z from "zod";
 import { useForm } from "react-hook-form";
@@ -84,11 +85,11 @@ export default function AccountSettings({
 	return (
 		<main>
 			<Form {...form}>
-				<form onSubmit={form.handleSubmit(handleSubmit)}>
-					<div className="rounded-lg border-2 border-muted px-5 py-10">
-						<h2 className="pb-5 text-3xl font-semibold">
-							Personal Information
-						</h2>
+				<form
+					onSubmit={form.handleSubmit(handleSubmit)}
+					className="space-y-6"
+				>
+					<FormGroupWrapper title="Personal Information">
 						<div className="grid max-w-[600px] gap-x-2 gap-y-5 md:grid-cols-2">
 							<FormField
 								control={form.control}
@@ -124,9 +125,8 @@ export default function AccountSettings({
 								</FormDescription>
 							</FormItem>
 						</div>
-						<h2 className="pb-5 pt-7 text-3xl font-semibold">
-							Public Information
-						</h2>
+					</FormGroupWrapper>
+					<FormGroupWrapper title="Public Information">
 						<div className="grid max-w-[500px] grid-cols-1 gap-x-2 gap-y-4">
 							<FormField
 								control={form.control}
@@ -171,23 +171,22 @@ export default function AccountSettings({
 								)}
 							/>
 						</div>
-						<Button
-							className="mt-5"
-							type="submit"
-							disabled={loadingState === "executing"}
-						>
-							{loadingState === "executing" ? (
-								<>
-									<Loader2
-										className={"mr-2 h-4 w-4 animate-spin"}
-									/>
-									<div>Updating</div>
-								</>
-							) : (
-								"Update"
-							)}
-						</Button>
-					</div>
+					</FormGroupWrapper>
+					<Button
+						type="submit"
+						disabled={loadingState === "executing"}
+					>
+						{loadingState === "executing" ? (
+							<>
+								<Loader2
+									className={"mr-2 h-4 w-4 animate-spin"}
+								/>
+								<div>Updating</div>
+							</>
+						) : (
+							"Update"
+						)}
+					</Button>
 				</form>
 			</Form>
 		</main>

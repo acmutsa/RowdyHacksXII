@@ -6,6 +6,12 @@ import Navbar from "@/components/shared/Navbar";
 import { Settings } from "lucide-react";
 import ClientToast from "@/components/shared/ClientToast";
 import { getUser } from "db/functions/user";
+import { Manuale } from "next/font/google";
+
+const manuale = Manuale({
+	subsets: ["latin"],
+	display: "swap",
+});
 
 export default async function ({ children }: { children: ReactNode }) {
 	const { userId } = await auth();
@@ -23,27 +29,15 @@ export default async function ({ children }: { children: ReactNode }) {
 		<>
 			<ClientToast />
 			<Navbar />
-			<div className="mx-auto grid max-w-5xl grid-cols-5 gap-x-3 pt-44">
-				<div className="col-span-5 flex items-center">
-					<div className="flex items-center pb-24">
-						<div>
-							<h2 className="flex items-center gap-x-2 text-3xl font-bold tracking-tight">
-								<Settings />
-								Settings
-							</h2>
-						</div>
+			<main className="flex justify-center overflow-x-hidden bg-transparent px-4 pt-32">
+				<div className="my-5 w-full max-w-5xl rounded-[3px] bg-card px-6 py-12 shadow-[-2px_10px_8px_rgba(0,0,0,0.28)] drop-shadow-[10px_14px_7px_rgba(0,0,0,0.45)] sm:px-10">
+
+					<div className={`my-10 md:col-span-4 md:ml-5 ${manuale.className}`}>
+						{children}
 					</div>
+
 				</div>
-				<aside className="sticky top-20 hidden h-screen md:block">
-					<SettingsSection name="Account" path="/settings#account" />
-					<SettingsSection name="Profile" path="/settings#profile" />
-					<SettingsSection
-						name="Registration"
-						path="/settings#registration"
-					/>
-				</aside>
-				<div className="col-span-4 mb-20 ml-5">{children}</div>
-			</div>
+			</main>
 		</>
 	);
 }

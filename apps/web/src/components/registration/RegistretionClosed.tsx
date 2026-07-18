@@ -4,12 +4,12 @@ import Link from "next/link";
 import { Manuale, Shadows_Into_Light } from "next/font/google";
 
 const manuale = Manuale({
-    subsets: ["latin"],
-    display: "swap",
+	subsets: ["latin"],
+	display: "swap",
 });
 const shadow = Shadows_Into_Light({
-    subsets: ["latin"],
-    weight: "400",
+	subsets: ["latin"],
+	weight: "400",
 });
 
 export default function RegistrationClosed() {
@@ -19,11 +19,11 @@ export default function RegistrationClosed() {
 				className={`relative flex max-w-xl flex-col items-center justify-center gap-y-5 ${manuale.className} bg-card px-16 py-20 rounded-[3px] shadow-[-2px_10px_8px_rgba(0,0,0,0.28)] drop-shadow-[10px_14px_7px_rgba(0,0,0,0.45)]`}
 			>
 				<p className={` text-end pb-[10%] text-md text-[#AC1903] sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl rotate-[8deg]  text-hackathon ${shadow.className} w-full`}>
-					Case File · {c.hackathonName} 
+					Case File · {c.hackathonName}
 				</p>
 
-				<h1 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-black leading-tight">
-					Registration Is <br/> Currently Closed
+				<h1 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-black leading-tight">
+					Registration Is <br /> Currently Closed
 				</h1>
 
 				<p className="max-w-md text-center font-light text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl 2xl:text-2xl ">

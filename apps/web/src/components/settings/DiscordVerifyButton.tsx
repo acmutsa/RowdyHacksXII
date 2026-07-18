@@ -32,7 +32,7 @@ export default function DiscordVerifyButton() {
 			>
 				Link Accounts
 			</Button>
-			<Button variant={"destructive"}>Cancel</Button>
+			<button className={`text-lg text-[#AC1903] text-hackathon underline sm:text-xl`} > Go Back </button>
 		</>
 	);
 }

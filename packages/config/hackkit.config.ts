@@ -15,12 +15,12 @@ import {
 const defaultTheme = "dark";
 
 const c = {
-	hackathonName: "HackKit",
+	hackathonName: "RowdyHacksXII",
 	itteration: "I",
 	siteUrl: "https://rowdyhacks.org", // Do not have a trailing slash
 	defaultMetaDataDescription: "Your Metadata Description Here",
 	rsvpDefaultLimit: 500,
-	botName: "HackKit",
+	botName: "RowdyHacksXII",
 	botParticipantRole: "RHXII Participant",
 	hackathonTimezone: "America/Chicago",
 	localUniversityName: schoolOptions[0],

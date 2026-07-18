@@ -29,7 +29,7 @@ export default async function ({ children }: { children: ReactNode }) {
 		<>
 			<ClientToast />
 			<Navbar />
-			<main className="flex justify-center overflow-x-hidden bg-transparent px-4 pt-32">
+			<main className="flex justify-center overflow-x-hidden bg-transparent px-4 py-24">
 				<div className="my-5 w-full max-w-5xl rounded-[3px] bg-card px-6 py-12 shadow-[-2px_10px_8px_rgba(0,0,0,0.28)] drop-shadow-[10px_14px_7px_rgba(0,0,0,0.45)] sm:px-10">
 
 					<div className={`my-10 md:col-span-4 md:ml-5 ${manuale.className}`}>

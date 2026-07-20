@@ -1,5 +1,17 @@
-import { ThreeCircles } from "react-loader-spinner";
-import { CircleCheckBig } from "lucide-react";
+"use client";
+
+import { LineWave } from "react-loader-spinner";
+import { Check } from "lucide-react";
+import { Manuale, Shadows_Into_Light } from "next/font/google";
+
+const manuale = Manuale({
+	subsets: ["latin"],
+	display: "swap",
+});
+const shadow = Shadows_Into_Light({
+	subsets: ["latin"],
+	weight: "400",
+});
 
 interface CreatingRegistrationProps {
 	hasSuccess: boolean | undefined;
@@ -18,23 +30,30 @@ export default function CreatingRegistration(props: CreatingRegistrationProps) {
 			: "Something Went Wrong. Please Try Again.";
 
 	return (
-		<main className="absolute bottom-0 left-0 z-10 flex min-h-screen w-screen flex-col items-center justify-center gap-y-20 bg-background">
-			<h1 className="w-full px-2 text-center text-3xl font-black md:px-0">
+		<>
+			<h1 className={`font-bold mt-5 font-light text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl 2xl:text-2xl ${manuale.className}`}>
 				{message}
 			</h1>
-			{hasSuccessState ? (
-				<CircleCheckBig size={80} color="#16a34a" />
-			) : (
-				<ThreeCircles
-					height="80"
-					width="80"
-					color="hsl(var(--primary))"
-					ariaLabel="bars-loading"
-					wrapperStyle={{}}
-					wrapperClass=""
-					visible={true}
-				/>
-			)}
-		</main>
+			<div className={`w-full h-auto flex item-center justify-center p-10 ${manuale.className}`}>
+				{hasSuccessState ? (
+					<Check size={40} color="#000000" />
+				) : (
+
+					<LineWave
+						visible={true}
+						height="60"
+						width="60"
+						color="#000000"
+						ariaLabel="line-wave-loading"
+						wrapperStyle={{}}
+						wrapperClass=""
+						firstLineColor=""
+						middleLineColor=""
+						lastLineColor=""
+					/>
+				)}
+			</div>
+		</>
+
 	);
 }

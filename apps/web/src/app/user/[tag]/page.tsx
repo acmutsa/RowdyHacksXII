@@ -2,6 +2,12 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Navbar from "@/components/shared/Navbar";
 import { getHackerByTag } from "db/functions";
+import { Shadows_Into_Light } from "next/font/google";
+
+const shadow = Shadows_Into_Light({
+	subsets: ["latin"],
+	weight: "400",
+});
 
 function ProfileField({
 	label,
@@ -97,6 +103,13 @@ export default async function ({ params }: { params: { tag: string } }) {
 									/>
 								</div>
 							</div>
+
+							<a
+								href="/settings"
+								className={`${shadow.className} text-md text-[#AC1903] sm:text-lg md:text-xl lg:text-2xl hover:underline`}
+							>
+								Change Evidence →
+							</a>
 
 						</div>
 

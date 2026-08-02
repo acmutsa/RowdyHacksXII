@@ -5,6 +5,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import { Label } from "@/components/shadcn/ui/label";
 import { Textarea } from "@/components/shadcn/ui/textarea";
 import ProfilePhotoSettings from "./ProfilePhotoSettings";
+import FormGroupWrapper from "@/components/registration/FormGroupWrapper";
 import { modifyProfileData } from "@/actions/user-profile-mod";
 import { useAction } from "next-safe-action/hooks";
 import { toast } from "sonner";
@@ -90,92 +91,88 @@ export default function ProfileSettings({
 	const isProfileSettingsLoading = actionStatus === "executing";
 
 	return (
-		<main>
+		<main className="space-y-6">
 			<ProfilePhotoSettings profilePhoto={profilePhoto} />
 			<Form {...form}>
-				<form
-					className="mt-5 rounded-lg border-2 border-muted px-5 py-10"
-					onSubmit={form.handleSubmit(handleUpdate)}
-				>
-					<h2 className="pb-5 text-3xl font-semibold">
-						Profile Data
-					</h2>
-					<div className="max-w-[500px] space-y-4">
-						<FormField
-							control={form.control}
-							name="pronouns"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Pronouns</FormLabel>
-									<FormControl>
-										<Input
-											placeholder="shadcn"
-											{...field}
-										/>
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<FormField
-							control={form.control}
-							name="bio"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Bio</FormLabel>
-									<FormControl>
-										<Textarea
-											placeholder="shadcn"
-											className="resize-none"
-											{...field}
-										/>
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<div>
-							<Label htmlFor="skills">Skills</Label>
-							<TagInput
-								inputFieldPostion="top"
-								placeholder="Type and then press enter to add a skill..."
-								tags={newSkills}
-								className="mt-2 sm:min-w-[450px]"
-								setTags={(newTags) => {
-									setNewSkills(newTags);
-								}}
+				<form onSubmit={form.handleSubmit(handleUpdate)}>
+					<FormGroupWrapper title="Profile Data">
+						<div className="max-w-[500px] space-y-4">
+							<FormField
+								control={form.control}
+								name="pronouns"
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Pronouns</FormLabel>
+										<FormControl>
+											<Input
+												placeholder="shadcn"
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name="bio"
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Bio</FormLabel>
+										<FormControl>
+											<Textarea
+												placeholder="shadcn"
+												className="resize-none"
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<div>
+								<Label htmlFor="skills">Skills</Label>
+								<TagInput
+									inputFieldPostion="top"
+									placeholder="Type and then press enter to add a skill..."
+									tags={newSkills}
+									className="mt-2 sm:min-w-[450px]"
+									setTags={(newTags) => {
+										setNewSkills(newTags);
+									}}
+								/>
+							</div>
+							<FormField
+								control={form.control}
+								name="discord"
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Discord Username</FormLabel>
+										<FormControl>
+											<Input {...field} />
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
 							/>
 						</div>
-						<FormField
-							control={form.control}
-							name="discord"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Discord Username</FormLabel>
-									<FormControl>
-										<Input {...field} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<Button
-							type="submit"
-							className="mt-10"
-							disabled={isProfileSettingsLoading}
-						>
-							{isProfileSettingsLoading ? (
-								<>
-									<Loader2
-										className={"mr-2 h-4 w-4 animate-spin"}
-									/>
-									<div>Updating</div>
-								</>
-							) : (
-								"Update"
-							)}
-						</Button>
-					</div>
+					</FormGroupWrapper>
+					<Button
+						type="submit"
+						className="mt-6"
+						disabled={isProfileSettingsLoading}
+					>
+						{isProfileSettingsLoading ? (
+							<>
+								<Loader2
+									className={"mr-2 h-4 w-4 animate-spin"}
+								/>
+								<div>Updating</div>
+							</>
+						) : (
+							"Update"
+						)}
+					</Button>
 				</form>
 			</Form>
 		</main>

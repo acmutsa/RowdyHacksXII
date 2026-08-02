@@ -12,21 +12,16 @@ export default async function Page() {
 	if (!user) return redirect("/sign-in");
 	const { email, ...userData } = user;
 	return (
-		<main>
-			<Header tag="Account" />
-			<AccountSettings user={userData} email={email} />
-			<Header tag="Profile" />
-			<ProfileSettings profile={userData} />
-			<Header tag={"Registration"} />
-			<RegistrationSettings />
+		<main className="space-y-6">
+			<div id="account">
+				<AccountSettings user={userData} email={email} />
+			</div>
+			<div id="profile">
+				<ProfileSettings profile={userData} />
+			</div>
+			<div id="registration">
+				<RegistrationSettings />
+			</div>
 		</main>
-	);
-}
-
-function Header({ tag }: { tag: string }) {
-	return (
-		<h1 id={tag.toLowerCase()} className="mt-10 pb-5 text-4xl font-bold">
-			{tag}
-		</h1>
 	);
 }

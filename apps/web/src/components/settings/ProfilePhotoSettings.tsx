@@ -8,6 +8,7 @@ import { useRef, useState } from "react";
 import { Input } from "../shadcn/ui/input";
 import { Button } from "../shadcn/ui/button";
 import { Loader2 } from "lucide-react";
+import FormGroupWrapper from "@/components/registration/FormGroupWrapper";
 
 export default function ProfilePhotoSettings({
 	profilePhoto,
@@ -60,8 +61,7 @@ export default function ProfilePhotoSettings({
 		setNewProfileImage(file);
 	};
 	return (
-		<div className="rounded-lg border-2 border-muted px-5 py-10">
-			<h2 className="pb-5 text-3xl font-semibold">Profile Photo</h2>
+		<FormGroupWrapper title="Profile Photo">
 			<div className="max-w-[500px] space-y-4">
 				<div>
 					<Avatar className={"h-24 w-24"}>
@@ -110,6 +110,6 @@ export default function ProfilePhotoSettings({
 					)}
 				</Button>
 			</div>
-		</div>
+		</FormGroupWrapper>
 	);
 }

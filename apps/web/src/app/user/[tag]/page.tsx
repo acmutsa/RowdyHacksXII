@@ -108,7 +108,7 @@ export default async function ({ params }: { params: { tag: string } }) {
 								href="/settings"
 								className={`${shadow.className} text-md text-[#AC1903] sm:text-lg md:text-xl lg:text-2xl hover:underline`}
 							>
-								Change Evidence =>
+								Change Evidence →
 							</a>
 
 						</div>

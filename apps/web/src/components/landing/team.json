@@ -82,12 +82,6 @@
             "left": "8%"
         },
         { 
-            "fname": "Blessy", 
-            "lname": "Kalluri", 
-            "imgLink": "/img/assets/team/Blessy Kalluri.webp", 
-            "linkedin": "https://www.linkedin.com/in/blessykalluri/" 
-        },
-        { 
             "fname": "Camille", 
             "lname": "Hart", 
             "imgLink": "/img/assets/team/Camille Hart.webp", 
@@ -118,25 +112,10 @@
             "left": "39%"
         },
         { 
-            "fname": "Dyshana", 
-            "lname": "Torres Rivera", 
-            "imgLink": "/img/assets/team/Dyshana Torres Rivera.webp", 
-            "linkedin": "https://www.linkedin.com/in/dyshana-torres/" 
-        },
-        { 
             "fname": "Elisa", 
             "lname": "Moran", 
             "imgLink": "/img/assets/team/Elisa Moran.webp", 
             "linkedin": "https://www.linkedin.com/in/elisa-moran-a6aa2b29a/" 
-        },
-        { 
-            "fname": "Eric", 
-            "lname": "Lee", 
-            "imgLink": "/img/assets/team/Eric Lee.webp", 
-            "linkedin": "https://www.linkedin.com/in/eric-lee-sunghyun/",
-            "note": "Lead?",
-            "top": "9%",
-            "left": "7%"
         },
         { 
             "fname": "Francisco", 
@@ -179,18 +158,6 @@
             "note": "Lead?",
             "top": "86%",
             "left": "10%"
-        },
-        { 
-            "fname": "Scherly", 
-            "lname": "Ramirez", 
-            "imgLink": "/img/assets/team/Scherly Ramirez.webp", 
-            "linkedin": "https://www.linkedin.com/in/scherly-ramirez-miranda-189623388/" 
-        },
-        { 
-            "fname": "Tochi", 
-            "lname": "Kalu", 
-            "imgLink": "/img/assets/team/Tochi Kalu.webp", 
-            "linkedin": "" 
         },
         { 
             "fname": "Victoria", 

@@ -3,4 +3,5 @@ type Sponsor = {
   logo: string;
   url: string;
   tier: string;
+  lable: string;
 };

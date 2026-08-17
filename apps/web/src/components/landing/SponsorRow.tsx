@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Manuale } from "next/font/google";
@@ -14,6 +14,7 @@ function SponsorRow({
 }: {
 	sponsor: Sponsor;
 }) {
+	const [blackNumber] = useState(() => Math.floor(Math.random() * 3) + 1);
 
 	return (
 		<Link
@@ -38,7 +39,21 @@ function SponsorRow({
 			<div className="flex flex-1 items-center justify-center p-4">
 				<span>{sponsor.name}</span>
 			</div>
-			<div className="flex-1" />
+			<div className="flex flex-1 items-center justify-center p-4" >
+				{sponsor.lable ? (
+					<span>{sponsor.lable}</span>
+				) : (
+
+					<div className="relative h-12 w-full">
+						<Image
+							src={`/img/sponsors/black${blackNumber}.svg`}
+							alt={`${sponsor.name} logo`}
+							fill
+							className="object-contain"
+						/>
+					</div>
+				)}
+			</div>
 		</Link>
 	);
 }

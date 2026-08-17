@@ -1,72 +1,41 @@
 {
 	"sponsors": [
 		{
-			"name": "H-E-B",
+			"name": "SWIVEL",
 			"logo": "HEB.svg",
 			"url": "https://www.heb.com/",
-			"tier": "title"
-		},
+			"tier": "title",
+			"lable": "$$$ UNKNOWN"
+		},		
 				{
-			"name": "H-E-B",
+			"name": "SerpAPI",
 			"logo": "HEB.svg",
 			"url": "https://www.heb.com/",
-			"tier": "title"
+			"tier": "gold",
+			"lable": "$$$ UNKNOWN"
 		},
-		
+
 				{
-			"name": "H-E-B",
+			"name": "Yahoo!",
 			"logo": "HEB.svg",
 			"url": "https://www.heb.com/",
-			"tier": "gold"
-		},
-				{
-			"name": "H-E-B",
-			"logo": "HEB.svg",
-			"url": "https://www.heb.com/",
-			"tier": "gold"
-		},
-				{
-			"name": "H-E-B",
-			"logo": "HEB.svg",
-			"url": "https://www.heb.com/",
-			"tier": "silver"
-		},
-				{
-			"name": "H-E-B",
-			"logo": "HEB.svg",
-			"url": "https://www.heb.com/",
-			"tier": "silver"
+			"tier": "silver",
+			"lable": ""
 		},
 
 		{
-			"name": "H-E-B",
+			"name": "ISACA",
 			"logo": "HEB.svg",
 			"url": "https://www.heb.com/",
-			"tier": "bronze"
+			"tier": "bronze",
+			"lable": ""
 		},
 						{
 			"name": "H-E-B",
 			"logo": "HEB.svg",
 			"url": "https://www.heb.com/",
-			"tier": "partner"
-		},
-								{
-			"name": "H-E-B",
-			"logo": "HEB.svg",
-			"url": "https://www.heb.com/",
-			"tier": "partner"
-		},
-								{
-			"name": "H-E-B",
-			"logo": "HEB.svg",
-			"url": "https://www.heb.com/",
-			"tier": "partner"
-		},
-								{
-			"name": "H-E-B",
-			"logo": "HEB.svg",
-			"url": "https://www.heb.com/",
-			"tier": "partner"
+			"tier": "partner",
+			"lable": "$$$ UNKNOWN"
 		}
 
 	]

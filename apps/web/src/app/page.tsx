@@ -3,7 +3,7 @@ import Hero from "@/components/landing/Hero";
 import About from "@/components/landing/About";
 import Map from "@/components/landing/Map";
 
-import Partners from "@/components/landing/Partners";
+import Sponsors from "@/components/landing/Sponsors";
 import Footer from "@/components/landing/Footer";
 import MLHBadge from "@/components/landing/MLHBadge";
 import FAQ from "@/components/landing/faq";
@@ -27,7 +27,7 @@ export default function Home() {
 				<About />
 				<Map />
 				<WorkWithUs />
-				<Partners />
+				<Sponsors />
 				<FAQ />
 				<Footer />
 			</main>

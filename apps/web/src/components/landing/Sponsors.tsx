@@ -16,14 +16,36 @@ const manuale = Manuale({
 	display: "swap",
 });
 
+const line = "Thank you our sponsors!!!";
+
 const sponsors: Sponsor[] = sponsorsData.sponsors;
 
+function DossierPinsLable() {
+	return (
+		<>
+			<Pin className="absolute left-[90%] top-[18%] z-30 sm:left-[85%] sm:top-[18%]" />
+			<Pin className="absolute left-[50%] top-[0%] z-30 lg:left-[50%] lg:top-[3%]" />
+			<Pin className="absolute left-[10%] top-[40%] z-30" />
+		</>
+	);
+}
+function DossierPinsTitle() {
+	return (
+		<>
+			<Pin className="absolute left-[20%] top-[10%] z-30" />
+			<Pin className="absolute left-[3%] top-[45%] z-30 " />
+			<Pin className="absolute left-[12%] top-[81%] z-30" />
+
+		</>
+	);
+}
 function DossierPins() {
 	return (
 		<>
-			<Pin className="absolute left-[70%] top-[18%] z-30 sm:left-[70%] sm:top-[15%] md:left-[69%] md:top-[17%] lg:left-[60%] lg:top-[10%]" />
-			<Pin className="absolute left-[50%] top-[0%] z-30 lg:left-[50%] lg:top-[3%]" />
-			<Pin className="absolute left-[26%] top-[26%] z-30 sm:left-[26%] sm:top-[23%] md:left-[30%] md:top-[22%] lg:left-[38%] lg:top-[23%]" />
+			<Pin className="absolute left-[45%] top-[10%] z-30 " />
+			<Pin className="absolute left-[93%] top-[15%] z-30 " />
+			<Pin className="absolute left-[100%] top-[56%] z-30" />
+			<Pin className="absolute left-[87%] top-[93%] z-30" />
 		</>
 	);
 }
@@ -35,24 +57,26 @@ export default async function Sponsors() {
 
 			<div className="relative flex flex-col items-center justify-center gap-y-6 py-10">
 
+				<div className="relative flex flex-col items-center justify-center gap-y-6 py-[3%] sm:px-[5%]">
+					<DossierPinsLable />
+					<div
+						className={`relative h-fit w-[48cqw] bg-contain bg-center bg-no-repeat sm:w-[38cqw] ${shadowsIntoLight.className} -rotate-6 drop-shadow-[2px_5px_1px_rgba(0,0,0,0.35)]`}
+						style={{
+							backgroundImage:
+								"url('/img/assets/sponsors/sponsors-header-background.svg')",
+						}}
+					>
 
-				<div
-					className={`relative h-fit w-[65cqw] sm:w-[60cqw] md:w-[50cqw] lg:w-[30cqw] bg-contain bg-center bg-no-repeat ${shadowsIntoLight.className} -rotate-6 drop-shadow-[2px_5px_1px_rgba(0,0,0,0.35)]`}
-					style={{
-						backgroundImage:
-							"url('/img/assets/sponsors/sponsors-header-background.svg')",
-					}}
-				>
-					<DossierPins />
-
-					<p className="font-shadows p-6 text-center text-black sm:text-lg md:text-xl lg:text-2xl xl:text-4xl 2xl:text-5xl">
-						Sponsors
-					</p>
+						<p className="font-shadows p-6 text-center text-black sm:text-lg md:text-xl lg:text-2xl xl:text-4xl 2xl:text-5xl">
+							Sponsors
+						</p>
+					</div>
 				</div>
 
 
 
 				<div className={`relative w-[80cqw] h-auto ${manuale.className}`}>
+					<DossierPinsTitle />
 
 					<img
 						src="/img/assets/sponsors/sponsors1.svg"
@@ -82,7 +106,7 @@ export default async function Sponsors() {
 
 						<div className="w-full h-auto flex item-center justify-center border-b border-foreground ">
 							<p className=" text-center text-md font-bold leading-tight sm:text-lg md:text-xl lg:text-2xl xl:text-4xl ">
-								Title Sponsors
+								Title Sponsor
 							</p>
 						</div>
 						<div className="w-full py-4 border-b border-foreground"></div>
@@ -96,6 +120,7 @@ export default async function Sponsors() {
 				</div>
 
 				<div className={`relative w-full h-auto ${manuale.className}`}>
+					<DossierPins />
 
 					<img
 						src="/img/assets/sponsors/sponsors2.svg"
@@ -104,7 +129,7 @@ export default async function Sponsors() {
 						className="absolute inset-0 h-full w-full object-fill drop-shadow-[6px_8px_3px_rgba(0,0,0,0.45)]"
 					/>
 
-					<div className="relative flex flex-col py-[35%] sm:py-[20%] px-[10%]">
+					<div className="relative flex flex-col pt-[35%] pb-[29%] sm:py-[20%] px-[10%]">
 
 						<div className="w-full h-auto flex item-center justify-center border-b border-foreground pt-8">
 							<p className=" text-center text-md font-bold leading-tight sm:text-lg md:text-xl lg:text-2xl xl:text-4xl ">
@@ -132,18 +157,6 @@ export default async function Sponsors() {
 
 						<div className="w-full h-auto flex item-center justify-center border-b border-foreground pt-8">
 							<p className=" text-center text-md font-bold leading-tight sm:text-lg md:text-xl lg:text-2xl xl:text-4xl ">
-								Bronze Sponsors
-							</p>
-						</div>
-						<div className="w-full py-4 border-b border-foreground"></div>
-						{sponsors
-							.filter((sponsor) => sponsor.tier === "bronze")
-							.map((sponsor) => (
-								<SponsorRow key={sponsor.name} sponsor={sponsor} />
-							))}
-
-						<div className="w-full h-auto flex item-center justify-center border-b border-foreground pt-8">
-							<p className=" text-center text-md font-bold leading-tight sm:text-lg md:text-xl lg:text-2xl xl:text-4xl ">
 								Partners
 							</p>
 						</div>
@@ -154,11 +167,27 @@ export default async function Sponsors() {
 								<SponsorRow key={sponsor.name} sponsor={sponsor} />
 							))}
 
+						<p className={` absolute insetr-0 ${shadowsIntoLight.className} text-[#AC1903] sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl rotate-[-7deg] left-[30%] bottom-[5%] sm:bottom-[7%] md:bottom-[7%] lg:bottom-[10%]`}>
+							{line.split("").map((char, i) => (
+								<motion.span
+									key={`l1-${i}`}
+									initial={{ opacity: 0, y: 6 }}
+									whileInView={{ opacity: 1, y: 0 }}
+									transition={{ delay: i * 0.05 }}
+									viewport={{ once: false, amount: 0.95 }}
+								>
+									{char}
+								</motion.span>
+							))}
+						</p>
+
 					</div>
+
+
 				</div>
 
 
 			</div>
-		</section>
+		</section >
 	);
 }

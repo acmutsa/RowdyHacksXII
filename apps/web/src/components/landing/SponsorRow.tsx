@@ -36,10 +36,10 @@ function SponsorRow({
 					<span>Logo</span>
 				)}
 			</div>
-			<div className="flex flex-1 items-center justify-center p-4">
+			<div className="flex flex-1 items-center justify-center p-4  text-sm font-light leading-tight sm:text-base md:text-lg xl:text-xl 2xl:text-2xl">
 				<span>{sponsor.name}</span>
 			</div>
-			<div className="flex flex-1 items-center justify-center p-4" >
+			<div className=" hidden sm:flex flex-1 items-center justify-center p-4 text-sm font-light leading-tight sm:text-base md:text-lg xl:text-xl 2xl:text-2xl" >
 				{sponsor.lable ? (
 					<span>{sponsor.lable}</span>
 				) : (

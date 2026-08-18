@@ -12,7 +12,7 @@
 			"logo": "HEB.svg",
 			"url": "https://www.heb.com/",
 			"tier": "gold",
-			"lable": "$$$ UNKNOWN"
+			"lable": ""
 		},
 
 				{
@@ -23,19 +23,33 @@
 			"lable": ""
 		},
 
-		{
-			"name": "ISACA",
-			"logo": "HEB.svg",
-			"url": "https://www.heb.com/",
-			"tier": "bronze",
-			"lable": ""
-		},
 						{
 			"name": "H-E-B",
 			"logo": "HEB.svg",
 			"url": "https://www.heb.com/",
 			"tier": "partner",
 			"lable": "$$$ UNKNOWN"
+		},
+								{
+			"name": "H-E-B",
+			"logo": "HEB.svg",
+			"url": "https://www.heb.com/",
+			"tier": "partner",
+			"lable": ""
+		},
+								{
+			"name": "H-E-B",
+			"logo": "HEB.svg",
+			"url": "https://www.heb.com/",
+			"tier": "partner",
+			"lable": "$$$ UNKNOWN"
+		},
+								{
+			"name": "H-E-B",
+			"logo": "HEB.svg",
+			"url": "https://www.heb.com/",
+			"tier": "partner",
+			"lable": ""
 		}
 
 	]

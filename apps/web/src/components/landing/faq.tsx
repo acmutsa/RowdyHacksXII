@@ -13,104 +13,104 @@ const shadow = Shadows_Into_Light({
 
 export function FaqHoverLink() {
 
-  return (
-	<Link href="/faq">
-		<motion.div
-		initial="rest"
-		whileHover="hover"
-		viewport={{once: true, amount: 0.6}}
-		className=" relative flex flex-col items-center justify-center py-[10cqw] md:py-[8cqw] xl:py-[5cqw] pb-0 "
-		>
-		<div className="relative inline-flex justify-center items-center gap-2">
-		<motion.span
-			variants={{
-				rest: { opacity: 0, y: 0 },
-				hover: { opacity: [0,0.25,0.5,0.65,0.75,1], y: -25 },
-				
-			}}
-			transition={{ duration: 0.15 }}
-			className={`text-2xl  lg:text-3xl xl:text-5xl ${shadow.className}  text-[#AB1820]`}
+	return (
+		<Link href="/faq">
+			<motion.div
+				initial="rest"
+				whileHover="hover"
+				viewport={{ once: true, amount: 0.6 }}
+				className=" relative flex flex-col items-center justify-center py-[10cqw] md:py-[8cqw] xl:py-[5cqw] pb-0 "
 			>
-			More Questions?</motion.span>
-			<motion.svg
-			width="60"
-			height="60"
-			viewBox="0 0 28 20"
-			variants={{
-				rest: { opacity:1,y: 5 },
-				hover: {opacity:1, y: 25 },
-			}}
-			transition={{duration: 0.15}}
-			className="absolute overflow-visible "
-			
-			>
-			<path
-				d="M7.5 5 L13.75 11 L20 5 "
-				fill="none"
-				stroke="#AB1820"
-				strokeWidth="2"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			
-			/>
-			</motion.svg>
-			
-		</div>
-		</motion.div>
-	</Link>
-  );
+				<div className="relative inline-flex justify-center items-center gap-2">
+					<motion.span
+						variants={{
+							rest: { opacity: 0, y: 0 },
+							hover: { opacity: [0, 0.25, 0.5, 0.65, 0.75, 1], y: -25 },
+
+						}}
+						transition={{ duration: 0.15 }}
+						className={`font-extrabold text-[#AC1903] lg:text-xl xl:text-2xl 2xl:text-3xl ${shadow.className}`}
+					>
+						More Questions?</motion.span>
+					<motion.svg
+						width="50"
+						height="50"
+						viewBox="0 0 28 20"
+						variants={{
+							rest: { opacity: 1, y: 5 },
+							hover: { opacity: 1, y: 25 },
+						}}
+						transition={{ duration: 0.15 }}
+						className="absolute overflow-visible "
+
+					>
+						<path
+							d="M7.5 5 L13.75 11 L20 5 "
+							fill="none"
+							stroke="#AC1903"
+							strokeWidth="2"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+
+						/>
+					</motion.svg>
+
+				</div>
+			</motion.div>
+		</Link>
+	);
 }
 
 
 export function MobileFaqHoverLink() {
 
 	return (
-	  <Link href="/faq">
-		  <motion.div
-		  initial="rest"
-		  whileInView="hover"
-		  viewport={{once: false, amount: 0.85}}
-		  className=" relative flex flex-col items-center justify-center py-[10cqw] md:py-[8cqw] xl:py-[5cqw] pb-0 "
-		  >
-		  <div className="relative inline-flex justify-center items-center gap-2">
-		  <motion.span
-			  variants={{
-				  rest: { opacity: 0, y: 0 },
-				  hover: { opacity: [0,0.25,0.5,0.65,0.75,1], y: -15 },
-				  
-			  }}
-			  transition={{ duration: 0.15 }}
-			  className={`text-3xl  ${shadow.className}  text-[#AB1820]`}
-			  >
-			  More Questions?</motion.span>
-			  <motion.svg
-			  width="45"
-			  height="45"
-			  viewBox="0 0 28 20"
-			  variants={{
-				  rest: { opacity:1,y: 5 },
-				  hover: {opacity:1, y: 25 },
-			  }}
-			  transition={{duration: 0.15}}
-			  className="absolute overflow-visible "
-			  
-			  >
-			  <path
-				  d="M7.5 5 L13.75 11 L20 5 "
-				  fill="none"
-				  stroke="#AB1820"
-				  strokeWidth="2"
-				  strokeLinecap="round"
-				  strokeLinejoin="round"
-			  
-			  />
-			  </motion.svg>
-			  
-		  </div>
-		  </motion.div>
-	  </Link>
+		<Link href="/faq">
+			<motion.div
+				initial="rest"
+				whileInView="hover"
+				viewport={{ once: false, amount: 0.85 }}
+				className=" relative flex flex-col items-center justify-center py-[10cqw] md:py-[8cqw] xl:py-[5cqw] pb-0 "
+			>
+				<div className="relative inline-flex justify-center items-center gap-2">
+					<motion.span
+						variants={{
+							rest: { opacity: 0, y: 0 },
+							hover: { opacity: [0, 0.25, 0.5, 0.65, 0.75, 1], y: -15 },
+
+						}}
+						transition={{ duration: 0.15 }}
+						className={`text-3xl  ${shadow.className}  text-[#AB1820]`}
+					>
+						More Questions?</motion.span>
+					<motion.svg
+						width="45"
+						height="45"
+						viewBox="0 0 28 20"
+						variants={{
+							rest: { opacity: 1, y: 5 },
+							hover: { opacity: 1, y: 25 },
+						}}
+						transition={{ duration: 0.15 }}
+						className="absolute overflow-visible "
+
+					>
+						<path
+							d="M7.5 5 L13.75 11 L20 5 "
+							fill="none"
+							stroke="#AB1820"
+							strokeWidth="2"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+
+						/>
+					</motion.svg>
+
+				</div>
+			</motion.div>
+		</Link>
 	);
-  }
+}
 
 const manuale = Manuale({
 	subsets: ["latin"],
@@ -127,9 +127,9 @@ const rightFaqs = allFaqs.slice(LEFT_COUNT);
 function DossierPins() {
 	return (
 		<>
-		<Pin className="absolute left-[25%] top-[5%] z-30 sm:left-[25%] sm:top-[7%]  md:left-[25%] md:top-[7%]" />
-		<Pin className="absolute left-[50%] top-[3%] z-30 sm:left-[50%] sm:top-[4%] md:left-[57%] md:top-[18%] lg:left-[57%] lg:top-[23%]" />
-		<Pin className="absolute left-[80%] top-[6%] z-30 sm:left-[80%] sm:top-[8%] md:left-[75%] md:top-[15%] lg:left-[75%] lg:top-[17%]" />
+			<Pin className="absolute left-[25%] top-[5%] z-30 sm:left-[25%] sm:top-[7%]  md:left-[25%] md:top-[7%]" />
+			<Pin className="absolute left-[50%] top-[3%] z-30 sm:left-[50%] sm:top-[4%] md:left-[57%] md:top-[18%]" />
+			<Pin className="absolute left-[80%] top-[6%] z-30 sm:left-[80%] sm:top-[8%] md:left-[75%] md:top-[15%] lg:left-[75%] lg:top-[8%]" />
 		</>
 	);
 }
@@ -226,7 +226,7 @@ function FaqItem({ item }: { item: Faq }) {
 
 export default function FAQ() {
 	return (
-		<section className="relative w-full flex items-center justify-center pb-[0vw] sm:pb-[3vw] md:pb-[5vw] [container-type:inline-size]" id="FAQ"> 
+		<section className="relative w-full flex items-center justify-center pb-[0vw] sm:pb-[3vw] md:pb-[5vw] [container-type:inline-size]" id="FAQ">
 			<DossierPins />
 			<div className="flex w-full flex-col items-center justify-center gap-8 [container-type:inline-size]">
 				{/* ===== Desktop & Tablet ===== */}
@@ -251,12 +251,12 @@ export default function FAQ() {
 								<FaqItem key={index} item={item} />
 							))}
 
-							<FaqHoverLink/>
+							<FaqHoverLink />
 
 						</div>
 					</div>
 				</div>
-				
+
 				{/* ===== Mobile ===== */}
 				<div className="flex w-full justify-center md:hidden">
 					<div className="relative flex w-[85cqw] flex-col gap-y-[0.5cqw] px-[10%] pb-[30%] pt-[20%]">
@@ -270,7 +270,7 @@ export default function FAQ() {
 						{allFaqs.map((item, index) => (
 							<FaqItem key={index} item={item} />
 						))}
-								<MobileFaqHoverLink/>
+						<MobileFaqHoverLink />
 					</div>
 				</div>
 			</div>

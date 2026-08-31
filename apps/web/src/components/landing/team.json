@@ -46,12 +46,6 @@
             "left": "15%"
         },
         { 
-            "fname": "Ash", 
-            "lname": "Hernandez", 
-            "imgLink": "/img/assets/team/Ash Hernandez.webp", 
-            "linkedin": "https://www.linkedin.com/in/ashley-hernandez-sanchez-b76312333/" 
-        },
-        { 
             "fname": "Maryna", 
             "lname": "Korolova", 
             "imgLink": "/img/assets/team/Maryna Korolova.webp", 
@@ -155,7 +149,6 @@
             "lname": "Schaefer", 
             "imgLink": "/img/assets/team/Savanah Schaefer.webp", 
             "linkedin": "https://www.linkedin.com/in/savanahsch/",
-            "note": "Lead?",
             "top": "86%",
             "left": "10%"
         },

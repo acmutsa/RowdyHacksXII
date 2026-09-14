@@ -42,7 +42,7 @@ function DossierPinsTitle() {
 function DossierPins() {
 	return (
 		<>
-			<Pin className="absolute left-[45%] top-[10%] z-30 " />
+			<Pin className="absolute left-[45%] top-[6%] z-30 " />
 			<Pin className="absolute left-[93%] top-[15%] z-30 " />
 			<Pin className="absolute left-[100%] top-[56%] z-30" />
 			<Pin className="absolute left-[87%] top-[93%] z-30" />
@@ -118,72 +118,90 @@ export default async function Sponsors() {
 					</div>
 
 				</div>
-
-				<div className={`relative w-full h-auto ${manuale.className}`}>
+				<div className={`relative w-[80cqw] h-auto flex flex-col items-center justify-center py-10`}>
 					<DossierPins />
-
 					<img
-						src="/img/assets/sponsors/sponsors2.svg"
+						src="/img/assets/sponsors/sponsors2-top.svg"
 						alt=""
 						aria-hidden
-						className="absolute inset-0 h-full w-full object-fill drop-shadow-[6px_8px_3px_rgba(0,0,0,0.45)]"
+						className="block h-full w-full object-fill drop-shadow-[6px_8px_3px_rgba(0,0,0,0.45)] mb-[-1px]"
 					/>
+					<div className={`relative w-full h-auto ${manuale.className}`}>
 
-					<div className="relative flex flex-col pt-[35%] pb-[29%] sm:py-[20%] px-[10%]">
+						<img
+							src="/img/assets/sponsors/sponsors2-bottom.svg"
+							alt=""
+							aria-hidden
+							className="absolute inset-0 h-full w-full object-fill drop-shadow-[6px_8px_3px_rgba(0,0,0,0.45)]"
+						/>
 
-						<div className="w-full h-auto flex item-center justify-center border-b border-foreground pt-8">
-							<p className=" text-center text-md font-bold leading-tight sm:text-lg md:text-xl lg:text-2xl xl:text-4xl ">
-								Gold Sponsors
+						<div className="relative flex flex-col pt-[2%] pb-[15%] px-[10%]">
+
+							<div className="w-full h-auto flex item-center justify-center border-b border-foreground pt-8">
+								<p className=" text-center text-md font-bold leading-tight sm:text-lg md:text-xl lg:text-2xl xl:text-4xl ">
+									Gold Sponsors
+								</p>
+							</div>
+							<div className="w-full py-4 border-b border-foreground"></div>
+							{sponsors
+								.filter((sponsor) => sponsor.tier === "gold")
+								.map((sponsor) => (
+									<SponsorRow key={sponsor.name} sponsor={sponsor} />
+								))}
+
+							<div className="w-full h-auto flex item-center justify-center border-b border-foreground pt-8">
+								<p className=" text-center text-md font-bold leading-tight sm:text-lg md:text-xl lg:text-2xl xl:text-4xl ">
+									Silver Sponsors
+								</p>
+							</div>
+							<div className="w-full py-4 border-b border-foreground"></div>
+							{sponsors
+								.filter((sponsor) => sponsor.tier === "silver")
+								.map((sponsor) => (
+									<SponsorRow key={sponsor.name} sponsor={sponsor} />
+								))}
+
+							<div className="w-full h-auto flex item-center justify-center border-b border-foreground pt-8">
+								<p className=" text-center text-md font-bold leading-tight sm:text-lg md:text-xl lg:text-2xl xl:text-4xl ">
+									Bronze Sponsors
+								</p>
+							</div>
+							<div className="w-full py-4 border-b border-foreground"></div>
+							{sponsors
+								.filter((sponsor) => sponsor.tier === "bronze")
+								.map((sponsor) => (
+									<SponsorRow key={sponsor.name} sponsor={sponsor} />
+								))}
+
+							<div className="w-full h-auto flex item-center justify-center border-b border-foreground pt-8">
+								<p className=" text-center text-md font-bold leading-tight sm:text-lg md:text-xl lg:text-2xl xl:text-4xl ">
+									Partners
+								</p>
+							</div>
+							<div className="w-full py-4 border-b border-foreground"></div>
+							{sponsors
+								.filter((sponsor) => sponsor.tier === "partner")
+								.map((sponsor) => (
+									<SponsorRow key={sponsor.name} sponsor={sponsor} />
+								))}
+
+							<p className={` absolute insetr-0 ${shadowsIntoLight.className} text-[#AC1903] sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl rotate-[-3deg] left-[30%] sm:left-[40%] bottom-[2%] md:bottom-[3%] xl:bottom-[5%]`}>
+								{line.split("").map((char, i) => (
+									<motion.span
+										key={`l1-${i}`}
+										initial={{ opacity: 0, y: 6 }}
+										whileInView={{ opacity: 1, y: 0 }}
+										transition={{ delay: i * 0.05 }}
+										viewport={{ once: false, amount: 0.95 }}
+									>
+										{char}
+									</motion.span>
+								))}
 							</p>
-						</div>
-						<div className="w-full py-4 border-b border-foreground"></div>
-						{sponsors
-							.filter((sponsor) => sponsor.tier === "gold")
-							.map((sponsor) => (
-								<SponsorRow key={sponsor.name} sponsor={sponsor} />
-							))}
 
-						<div className="w-full h-auto flex item-center justify-center border-b border-foreground pt-8">
-							<p className=" text-center text-md font-bold leading-tight sm:text-lg md:text-xl lg:text-2xl xl:text-4xl ">
-								Silver Sponsors
-							</p>
 						</div>
-						<div className="w-full py-4 border-b border-foreground"></div>
-						{sponsors
-							.filter((sponsor) => sponsor.tier === "silver")
-							.map((sponsor) => (
-								<SponsorRow key={sponsor.name} sponsor={sponsor} />
-							))}
-
-						<div className="w-full h-auto flex item-center justify-center border-b border-foreground pt-8">
-							<p className=" text-center text-md font-bold leading-tight sm:text-lg md:text-xl lg:text-2xl xl:text-4xl ">
-								Partners
-							</p>
-						</div>
-						<div className="w-full py-4 border-b border-foreground"></div>
-						{sponsors
-							.filter((sponsor) => sponsor.tier === "partner")
-							.map((sponsor) => (
-								<SponsorRow key={sponsor.name} sponsor={sponsor} />
-							))}
-
-						<p className={` absolute insetr-0 ${shadowsIntoLight.className} text-[#AC1903] sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl rotate-[-7deg] left-[30%] bottom-[5%] sm:bottom-[7%] md:bottom-[7%] lg:bottom-[10%]`}>
-							{line.split("").map((char, i) => (
-								<motion.span
-									key={`l1-${i}`}
-									initial={{ opacity: 0, y: 6 }}
-									whileInView={{ opacity: 1, y: 0 }}
-									transition={{ delay: i * 0.05 }}
-									viewport={{ once: false, amount: 0.95 }}
-								>
-									{char}
-								</motion.span>
-							))}
-						</p>
 
 					</div>
-
-
 				</div>
 
 

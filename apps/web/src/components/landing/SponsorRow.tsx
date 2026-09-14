@@ -26,7 +26,7 @@ function SponsorRow({
 				{sponsor.logo ? (
 					<div className="relative h-12 w-full">
 						<Image
-							src={`/img/partner-logos/${sponsor.logo}`}
+							src={`/img/sponsor-logos/${sponsor.logo}`}
 							alt={`${sponsor.name} logo`}
 							fill
 							className="object-contain"
@@ -36,7 +36,7 @@ function SponsorRow({
 					<span>Logo</span>
 				)}
 			</div>
-			<div className="flex flex-1 items-center justify-center p-4  text-sm font-light leading-tight sm:text-base md:text-lg xl:text-xl 2xl:text-2xl">
+			<div className="flex flex-1 items-center justify-start p-4 pl-8 text-sm font-light leading-tight sm:text-base md:text-lg xl:text-xl 2xl:text-2xl">
 				<span>{sponsor.name}</span>
 			</div>
 			<div className=" hidden sm:flex flex-1 items-center justify-center p-4 text-sm font-light leading-tight sm:text-base md:text-lg xl:text-xl 2xl:text-2xl" >

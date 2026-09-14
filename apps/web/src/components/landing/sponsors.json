@@ -1,0 +1,126 @@
+{
+	"sponsors": [
+		{
+			"name": "Swivel",
+			"logo": "swivel.svg",
+			"url": "https://www.getswivel.io/",
+			"tier": "title",
+			"lable": "$$$ UNKNOWN"
+		},		
+		{
+			"name": "SerpAPI",
+			"logo": "serp-api.svg",
+			"url": "https://www.serpapi.com/",
+			"tier": "gold",
+			"lable": ""
+		},
+		{
+			"name": "Yahoo!",
+			"logo": "yahoo.svg",
+			"url": "https://www.yahoo.com/",
+			"tier": "silver",
+			"lable": ""
+		},
+		{
+			"name": "USAA",
+			"logo": "usaa.svg",
+			"url": "https://www.usaa.com/",
+			"tier": "bronze",
+			"lable": ""
+		},								
+		{
+			"name": "H-E-B",
+			"logo": "HEB.svg",
+			"url": "https://www.heb.com/",
+			"tier": "bronze",
+			"lable": ""
+		},
+		{
+			"name": "XPEL",
+			"logo": "xpel.svg",
+			"url": "https://www.xpel.com/",
+			"tier": "bronze",
+			"lable": ""
+		},
+		{
+			"name": "LEAN TECHNIQUES",
+			"logo": "lean-techniques.svg",
+			"url": "https://leantechniques.com/",
+			"tier": "bronze",
+			"lable": ""
+		},
+		{
+			"name": "AnaVation",
+			"logo": "ana-vation.svg",
+			"url": "https://anavationllc.com/",
+			"tier": "bronze",
+			"lable": "$$$ UNKNOWN"
+		},
+		{
+			"name": "ARA",
+			"logo": "ara.svg",
+			"url": "https://www.ara.com/",
+			"tier": "bronze",
+			"lable": ""
+		},
+		{
+			"name": "UT San Antonio Computer Science",
+			"logo": "cs-department.svg",
+			"url": "https://caicc.utsa.edu/computer-science/",
+			"tier": "bronze",
+			"lable": ""
+		},
+		{
+			"name": "ISACA",
+			"logo": "isaca.svg",
+			"url": "http://isaca.org/",
+			"tier": "partner",
+			"lable": ""
+		},
+		{
+			"name": "Klesse College of Engineering and Integrated Design",
+			"logo": "klesse.svg",
+			"url": "https://klesse.utsa.edu/",
+			"tier": "partner",
+			"lable": ""
+		},
+		{
+			"name": "College of AI, Cyber and Computing",
+			"logo": "CAIC.svg",
+			"url": "https://caicc.utsa.edu/",
+			"tier": "partner",
+			"lable": ""
+		},
+		{
+			"name": "Webhead Technologies",
+			"logo": "webhead.svg",
+			"url": "https://www.webheadtech.com/",
+			"tier": "partner",
+			"lable": ""
+		},
+		{
+			"name": "Investment Society",
+			"logo": "investment-society.svg",
+			"url": "https://www.theinvestmentsociety.com/",
+			"tier": "inkind",
+			"lable": "$$$ UNKNOWN"
+		},
+		{
+			"name": "Pure Buttons",
+			"logo": "pure-buttons.svg",
+			"url": "https://www.purebuttons.com/",
+			"tier": "inkind",
+			"lable": ""
+		},
+		{
+			"name": "434 Media",
+			"logo": "434-media.svg",
+			"url": "https://www.434media.com/",
+			"tier": "inkind",
+			"lable": ""
+		}
+
+
+
+	]
+}

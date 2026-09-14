@@ -12,6 +12,7 @@ const line2_2 = "Main Campus";
 const line3_1 = "UTSA";
 const line3_2 = "San Pedro 1";
 const line3_3 = "(Place of action)";
+const line4_1 = "Swivel";
 
 const shadowsIntoLight = Shadows_Into_Light({
 	weight: "400",
@@ -77,6 +78,19 @@ export default function Map() {
 		20,
 	);
 
+	const swivelCampusPinStyle = findPosition(
+		mapContainerRef,
+		mapImgRef,
+		{ x: 0.39, y: 0.22 },
+		20,
+	);
+	const swivelTextStyle = findPosition(
+		mapContainerRef,
+		mapImgRef,
+		{ x: 0.43, y: 0.25 },
+		10,
+	);
+
 	const connectedStyle = findPosition(
 		mapContainerRef,
 		mapImgRef,
@@ -138,13 +152,19 @@ export default function Map() {
 									</p>
 								</div>
 							</div>
-                    </div>
+						</div>
 					</div>
 
 					<div
 						ref={mapContainerRef}
 						className={`relative flex h-[75cqw] w-full items-center justify-start sm:h-[55cqw] md:h-[70cqw] lg:h-[55cqw] xl:h-[50cqw] `}
 					>
+
+						{/* Swivel */}
+						<div style={swivelCampusPinStyle}>
+							<Pin name="/img/assets/map/pin5.webp" size={50} no_thread />
+						</div>
+
 						{/* Main Campus */}
 						<div style={mainCampusPinStyle}>
 							<Pin name="/img/assets/map/pin5.webp" size={50} />
@@ -166,7 +186,7 @@ export default function Map() {
 										key={`l1-${i}`}
 										initial={{ opacity: 0, y: 6 }}
 										whileInView={{ opacity: 1, y: 0 }}
-										transition={{ delay: 1.8 + i * 0.05 }}
+										transition={{ delay: 2.5 + i * 0.05 }}
 										viewport={{ once: false, amount: 0.95 }}
 									>
 										{char}
@@ -178,7 +198,7 @@ export default function Map() {
 										key={`l1-${i}`}
 										initial={{ opacity: 0, y: 6 }}
 										whileInView={{ opacity: 1, y: 0 }}
-										transition={{ delay: 2.7 + i * 0.05 }}
+										transition={{ delay: 3.4 + i * 0.05 }}
 										viewport={{ once: false, amount: 0.95 }}
 									>
 										{char}
@@ -190,7 +210,27 @@ export default function Map() {
 										key={`l1-${i}`}
 										initial={{ opacity: 0, y: 6 }}
 										whileInView={{ opacity: 1, y: 0 }}
-										transition={{ delay: 3.6 + i * 0.05 }}
+										transition={{ delay: 4.5 + i * 0.05 }}
+										viewport={{ once: false, amount: 0.95 }}
+									>
+										{char}
+									</motion.span>
+								))}
+							</p>
+						</a>
+
+						<a
+							href="https://maps.app.goo.gl/s2xye8ih4jYgWkTx5"
+							target="_blank"
+							style={swivelTextStyle}
+						>
+							<p className="text-sm font-extrabold text-[#AC1903] hover:underline sm:text-base md:text-lg lg:text-xl xl:text-3xl 2xl:text-4xl">
+								{line4_1.split("").map((char, i) => (
+									<motion.span
+										key={`l1-${i}`}
+										initial={{ opacity: 0, y: 6 }}
+										whileInView={{ opacity: 1, y: 0 }}
+										transition={{ delay: i * 0.05 }}
 										viewport={{ once: false, amount: 0.95 }}
 									>
 										{char}
@@ -232,7 +272,7 @@ export default function Map() {
 										key={`l1-${i}`}
 										initial={{ opacity: 0, y: 6 }}
 										whileInView={{ opacity: 1, y: 0 }}
-										transition={{ delay: i * 0.05 }}
+										transition={{ delay: 0.8 + i * 0.05 }}
 										viewport={{ once: false, amount: 0.95 }}
 									>
 										{char}
@@ -244,7 +284,7 @@ export default function Map() {
 										key={`l1-${i}`}
 										initial={{ opacity: 0, y: 6 }}
 										whileInView={{ opacity: 1, y: 0 }}
-										transition={{ delay: 0.8 + i * 0.05 }}
+										transition={{ delay: 1.6 + i * 0.05 }}
 										viewport={{ once: false, amount: 0.95 }}
 									>
 										{char}
@@ -260,7 +300,7 @@ export default function Map() {
 										key={`l1-${i}`}
 										initial={{ opacity: 0, y: 6 }}
 										whileInView={{ opacity: 1, y: 0 }}
-										transition={{ delay: 5 + i * 0.05 }}
+										transition={{ delay: 6.6 + i * 0.05 }}
 										viewport={{ once: false, amount: 0.95 }}
 									>
 										{char}

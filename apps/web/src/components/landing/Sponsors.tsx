@@ -42,7 +42,7 @@ function DossierPinsTitle() {
 function DossierPins() {
 	return (
 		<>
-			<Pin className="absolute left-[45%] top-[6%] z-30 " />
+			<Pin className="absolute left-[70%] top-[4%] sm:top-[6%] z-30 " />
 			<Pin className="absolute left-[93%] top-[15%] z-30 " />
 			<Pin className="absolute left-[100%] top-[56%] z-30" />
 			<Pin className="absolute left-[87%] top-[93%] z-30" />

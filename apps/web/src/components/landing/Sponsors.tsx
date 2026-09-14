@@ -185,6 +185,18 @@ export default async function Sponsors() {
 									<SponsorRow key={sponsor.name} sponsor={sponsor} />
 								))}
 
+							<div className="w-full h-auto flex item-center justify-center border-b border-foreground pt-8">
+								<p className=" text-center text-md font-bold leading-tight sm:text-lg md:text-xl lg:text-2xl xl:text-4xl ">
+									In-Kind Donations
+								</p>
+							</div>
+							<div className="w-full py-4 border-b border-foreground"></div>
+							{sponsors
+								.filter((sponsor) => sponsor.tier === "inkind")
+								.map((sponsor) => (
+									<SponsorRow key={sponsor.name} sponsor={sponsor} />
+								))}
+
 							<p className={` absolute insetr-0 ${shadowsIntoLight.className} text-[#AC1903] sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl rotate-[-3deg] left-[30%] sm:left-[40%] bottom-[2%] md:bottom-[3%] xl:bottom-[5%]`}>
 								{line.split("").map((char, i) => (
 									<motion.span

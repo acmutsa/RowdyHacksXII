@@ -81,7 +81,7 @@ const c = {
 	},
 	issueEmail: "team@rowdyhacks.org",
 	links: {
-		discord: "https://discord.gg/C6DwwSYDN5",
+		discord: "https://discord.gg/pTZnY3RbrW",
 		instagram: "https://instagram.com/rowdyhacks",
 		facebook: "https://facebook.com/rowdyhacks",
 		twitter: "https://twitter.com/rowdyhacks",

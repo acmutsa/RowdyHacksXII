@@ -11,11 +11,11 @@ export default function MLHBadge() {
 				<Link
 					id="mlh-trust-badge"
 					className="absolute right-[6.1%] top-0 w-[10%] min-w-[60px] max-w-[100px]"
-					href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2025-season&utm_content=black"
+					href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2026-season&utm_content=black"
 					target="_blank"
 				>
 					<Image
-						src="https://logged-assets.s3.amazonaws.com/trust-badge/2027/mlh-trust-badge-2027-red.svg"
+						src="https://logged-assets.s3.amazonaws.com/trust-badge/2027/mlh-trust-badge-2027-black.svg"
 						alt="Major League Hacking 2026 Hackathon Season"
 						width={0}
 						height={0}

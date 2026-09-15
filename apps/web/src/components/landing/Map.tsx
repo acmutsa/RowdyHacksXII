@@ -220,7 +220,7 @@ export default function Map() {
 						</a>
 
 						<a
-							href="https://maps.app.goo.gl/s2xye8ih4jYgWkTx5"
+							href="https://www.getswivel.io/"
 							target="_blank"
 							style={swivelTextStyle}
 						>

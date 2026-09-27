@@ -32,6 +32,16 @@ function splitByDay(schedule: Event[], timezone: string) {
 	);
 }
 
+const MAX_EVENTS_PER_PAGE = 10;
+
+function chunk<T>(items: T[], size: number) {
+	const chunks: T[][] = [];
+	for (let i = 0; i < items.length; i += size) {
+		chunks.push(items.slice(i, i + size));
+	}
+	return chunks;
+}
+
 type ScheduleTimelineProps = {
 	schedule: Event[];
 	timezone: string;
@@ -72,31 +82,35 @@ export default function ScheduleTimeline({
 					</div>
 				</div>
 
-				{days.map(([day, events]) => (
-					<div className={`pb-[15cqw] md:hidden px-[5cqw] ${manuale.className}`}>
-						<div key={day} className="relative w-full h-auto" >
-							<PaperPins />
+				{days.flatMap(([day, events]) =>
+					chunk(events, MAX_EVENTS_PER_PAGE).map((pageEvents, page) => (
+						<div
+							key={`${day}-${page}`}
+							className={`pb-[15cqw] md:hidden px-[5cqw] ${manuale.className}`}
+						>
+							<div className="relative w-full h-auto">
+								<PaperPins />
 
-							<div className="absolute inset-0 -z-10 overflow-hidden drop-shadow-[6px_8px_3px_rgba(0,0,0,0.45)]">
-								<img
-									src="/img/assets/dash/schedule-phone-background.webp"
-									alt=""
-									aria-hidden
-									className="w-full h-auto"
-								/>
+								<div className="absolute inset-0 -z-10 overflow-hidden drop-shadow-[6px_8px_3px_rgba(0,0,0,0.45)]">
+									<img
+										src="/img/assets/dash/schedule-phone-background.webp"
+										alt=""
+										aria-hidden
+										className="w-full h-auto"
+									/>
+								</div>
+
+								<div className="w-full h-auto pl-[6cqw] pr-[12cqw] py-[15cqw] text-black">
+									<DaySchedule
+										day={day}
+										events={pageEvents}
+										timezone={timezone}
+									/>
+								</div>
 							</div>
-
-							<div className="w-full h-auto pl-[6cqw] pr-[12cqw] py-[15cqw] text-black">
-								<DaySchedule
-									day={day}
-									events={events}
-									timezone={timezone}
-								/>
-							</div>
-
 						</div>
-					</div>
-				))}
+					)),
+				)}
 
 			</section>
 		</>

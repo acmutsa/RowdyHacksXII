@@ -10,6 +10,16 @@ import { SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 import Link from "next/link";
 import { Button } from "@/components/shadcn/ui/button";
 import { getUser } from "db/functions";
+import { Manuale, Shadows_Into_Light } from "next/font/google";
+
+const manuale = Manuale({
+	subsets: ["latin"],
+	display: "swap",
+});
+const shadow = Shadows_Into_Light({
+	subsets: ["latin"],
+	weight: "400",
+});
 
 export default async function RsvpPage() {
 	const { userId } = await auth();
@@ -54,44 +64,44 @@ export default async function RsvpPage() {
 		return (
 			<>
 				<ClientToast />
-				<main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center justify-center">
-					<div className="max-w-screen fixed left-1/2 top-[calc(50%+7rem)] h-[40vh] w-[800px] -translate-x-1/2 -translate-y-1/2 scale-150 overflow-x-hidden bg-hackathon opacity-30 blur-[100px] will-change-transform"></div>
-					<h2 className="text-4xl font-extrabold">
-						{c.hackathonName}
-					</h2>
-					<h1 className="mb-10 text-6xl font-extrabold text-hackathon dark:bg-gradient-to-t dark:from-hackathon/80 dark:to-white dark:bg-clip-text dark:text-transparent md:text-8xl">
-						RSVP
-					</h1>
+				<main className="my-10 flex min-h-screen flex-col items-center justify-center gap-y-10 px-4">
 					<ConfirmDialogue hasRsvped={user.isRSVPed} />
 				</main>
 			</>
 		);
-	} else {
-		return (
-			<main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center justify-center">
-				<div className="max-w-screen fixed left-1/2 top-[calc(50%+7rem)] h-[40vh] w-[800px] -translate-x-1/2 -translate-y-1/2 scale-150 overflow-x-hidden bg-hackathon opacity-30 blur-[100px] will-change-transform"></div>
-				<h2 className="text-4xl font-extrabold">{c.hackathonName}</h2>
-				<h1 className="mb-10 text-6xl font-extrabold text-hackathon dark:bg-gradient-to-t dark:from-hackathon/80 dark:to-white dark:bg-clip-text dark:text-transparent md:text-8xl">
-					RSVP
+	}
+
+	return (
+		<main className="my-10 flex min-h-screen flex-col items-center justify-center gap-y-10 px-4">
+			<div
+				className={`relative flex max-w-xl flex-col items-center justify-center gap-y-5 ${manuale.className} rounded-[3px] bg-card px-16 py-20 shadow-[-2px_10px_8px_rgba(0,0,0,0.28)] drop-shadow-[10px_14px_7px_rgba(0,0,0,0.45)]`}
+			>
+				<p
+					className={`text-md w-full rotate-[-8deg] pb-[10%] text-end text-[#AC1903] text-hackathon sm:text-lg md:text-xl xl:text-3xl 2xl:text-4xl ${shadow.className}`}
+				>
+					The Plans Are Full
+				</p>
+
+				<h1 className="text-center text-xl font-black leading-tight sm:text-2xl md:text-3xl lg:text-4xl">
+					RSVPs Are <br /> Currently Closed
 				</h1>
-				<div className="relative flex aspect-video w-full max-w-[500px] flex-col items-center justify-center rounded-xl bg-white p-5 backdrop-blur transition dark:bg-white/[0.08]">
-					<h1 className="flex items-center gap-x-2 text-center text-2xl font-bold text-red-500">
-						RSVPs Are Currently Closed
-					</h1>
-					<p className="pb-10 pt-5 text-center">
-						We have currently reached capacity for RSVPs. However,
-						we still encourage you to show up for walk-ins! If you
-						have any questions or concerns, feel free to ask on{" "}
-						<Link href={c.links.discord} className="underline">
-							Discord
-						</Link>{" "}
-						or email us at {c.issueEmail}!
-					</p>
-					<Link href={"/dash"}>
+
+				<p className="max-w-md text-center text-sm font-light sm:text-base md:text-lg xl:text-xl 2xl:text-2xl">
+					We have currently reached capacity for RSVPs. However, we
+					still encourage you to show up for walk-ins! If you have any
+					questions or concerns, feel free to ask on{" "}
+					<Link href={c.links.discord} className="underline">
+						Discord
+					</Link>{" "}
+					or email us at {c.issueEmail}!
+				</p>
+
+				<div className="mt-2 flex items-center gap-x-4">
+					<Link href="/dash">
 						<Button>Go To Dashboard</Button>
 					</Link>
 				</div>
-			</main>
-		);
-	}
+			</div>
+		</main>
+	);
 }

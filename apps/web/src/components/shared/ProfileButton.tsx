@@ -23,6 +23,7 @@ import { getUser } from "db/functions";
 import { clientLogOut } from "@/lib/utils/server/user";
 import Restricted from "../Restricted";
 import { PermissionType } from "@/lib/constants/permission";
+import c from "config";
 
 export default async function ProfileButton() {
 	const clerkUser = await auth();
@@ -145,6 +146,11 @@ export default async function ProfileButton() {
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator className="bg-[rgb(228,228,231)] dark:bg-[rgb(39,39,42)]" />
 				<DropdownMenuGroup>
+					<Link href={`/dash`}>
+						<DropdownMenuItem className="cursor-pointer">
+							Dashboard
+						</DropdownMenuItem>
+					</Link>
 					<Link href={`/@${user.hackerTag}`}>
 						<DropdownMenuItem className="cursor-pointer">
 							Profile
@@ -155,7 +161,16 @@ export default async function ProfileButton() {
 							Event Pass
 						</DropdownMenuItem>
 					</Link>
-
+					<Link href={`/rsvp`}>
+						<DropdownMenuItem className="cursor-pointer">
+							RSVP
+						</DropdownMenuItem>
+					</Link>
+					<Link href={c.links.discord} target="_blank" className="text-sm hover:underline sm:text-sm md:text-lg lg:text-2xl xl:text-3xl 2xl:text-3xl">
+						<DropdownMenuItem className="cursor-pointer">
+							Discord
+						</DropdownMenuItem>
+					</Link>
 					<Restricted user={user} permissions={PermissionType.ADMIN}>
 						<Link href={`/admin`}>
 							<DropdownMenuItem className="cursor-pointer text-hackathon">

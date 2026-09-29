@@ -3,7 +3,8 @@ import Pin from "@/components/landing/Pin";
 import { formatInTimeZone } from "date-fns-tz";
 import Link from "next/link";
 import { Manuale, Shadows_Into_Light } from "next/font/google";
-
+import { motion } from 'motion/react';
+import ActiveCircle from "@/components/schedule/active-event";
 const manuale = Manuale({
 	subsets: ["latin"],
 	display: "swap",
@@ -153,16 +154,25 @@ function DaySchedule({ day, events, timezone }: DayScheduleProps) {
 	);
 }
 
+
 function EventRow({ event, timezone }: { event: Event; timezone: string }) {
 	const startTime = formatInTimeZone(event.startTime, timezone, "hh:mm a");
+	const endTime = formatInTimeZone(event.endTime, timezone, "hh:mm a");
+	const now = Date.now();
+	const isActive = event.startTime.getTime() <= now && now <= event.endTime.getTime();
 
 	return (
 		<Link
 			href={`/schedule/${event.id}`}
 			className="group grid grid-cols-7 text-[0.72rem] sm:text-[0.8rem] md:text-[clamp(0.72rem,0.9vw,1rem)]"
 		>
-			<time className="flex items-start justify-center border-r border-black/60 col-span-2 px-2 py-2 md:px-3 md:py-3">
-				{startTime}
+			<time className="relative col-span-2 flex items-center justify-center border-r border-black/60 px-2 py-2 md:px-3 md:py-3">
+				<span className="relative z-10 inline-flex items-center justify-center">
+					{startTime} - {endTime}
+					{isActive && (
+						<ActiveCircle/>
+					)}
+				</span>
 			</time>
 			<p className="col-span-5 w-full px-2 py-2 transition-colors group-hover:bg-black/5 md:px-3 md:py-3">
 				<strong className="block text-[1.14em] leading-none">

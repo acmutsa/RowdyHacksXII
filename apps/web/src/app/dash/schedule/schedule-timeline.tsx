@@ -159,7 +159,7 @@ function EventRow({ event, timezone }: { event: Event; timezone: string }) {
 	const startTime = formatInTimeZone(event.startTime, timezone, "hh:mm a");
 	const endTime = formatInTimeZone(event.endTime, timezone, "hh:mm a");
 	const now = Date.now();
-	const isActive = true; //event.startTime.getTime() <= now && now <= event.endTime.getTime();
+	const isActive = event.startTime.getTime() <= now && now <= event.endTime.getTime();
 
 	return (
 		<Link

@@ -13,7 +13,7 @@ export default function ActiveCircle() {
   return (
     <svg
       viewBox="0 0 75 31"
-      className="pointer-events-none absolute left-1/2 top-1/2 h-[calc(100%+1.75rem)] w-[calc(100%+2.15rem)] -translate-x-1/2 -translate-y-1/2 overflow-visible"
+      className="pointer-events-none absolute left-1/2 top-1/2 h-[calc(100%+2.5rem)] w-[calc(100%+2.25rem)] -translate-x-1/2 -translate-y-1/2 overflow-visible"
     >
       <defs>
         <mask id="draw-mask">

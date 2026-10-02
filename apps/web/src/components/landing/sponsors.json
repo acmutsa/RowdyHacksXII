@@ -126,6 +126,38 @@
 			"tier": "inkind",
 			"lable": "$$$ UNKNOWN"
 		}
+		,
+		{
+			"name": "LISTERIN",
+			"logo": "listerin.svg",
+			"url": "https://www.listerine.com/",
+			"tier": "inkind",
+			"lable": ""
+		}
+		,
+		{
+			"name": "Maritime",
+			"logo": "maritime.svg",
+			"url": "https://maritime.sh/",
+			"tier": "inkind",
+			"lable": ""
+		}
+		,
+		{
+			"name": "PCBWay",
+			"logo": "pcb-way.svg",
+			"url": "https://www.pcbway.com/",
+			"tier": "inkind",
+			"lable": ""
+		}
+		,
+		{
+			"name": "servicenow",
+			"logo": "service-now.svg",
+			"url": "https://www.servicenow.com/",
+			"tier": "inkind",
+			"lable": ""
+		}
 
 
 

@@ -1,6 +1,9 @@
 import { db, ilike, or, and, eq } from "db";
 import { DataTable } from "@/components/admin/users/UserDataTable";
-import { columns } from "@/components/admin/users/UserColumns";
+import {
+	columns,
+	type UserTableMeta,
+} from "@/components/admin/users/UserColumns";
 import { Button } from "@/components/shadcn/ui/button";
 import { FolderInput } from "lucide-react";
 import { getAllUsers } from "db/functions";
@@ -15,6 +18,11 @@ export default async function Page() {
 	if (!userHasPermission(user, PermissionType.VIEW_USERS)) return notFound();
 
 	const userData = await getAllUsers();
+
+	const tableMeta: UserTableMeta = {
+		canCheckIn: userHasPermission(user, PermissionType.CHECK_IN),
+		viewerRolePosition: user.role?.position ?? Number.MAX_SAFE_INTEGER,
+	};
 
 	return (
 		<div className="mx-auto max-w-7xl px-5">
@@ -41,7 +49,11 @@ export default async function Page() {
 			<div className="flex w-full justify-center">
 				{userData && userData.length > 0 ? (
 					<>
-						<DataTable columns={columns} data={userData} />
+						<DataTable
+							columns={columns}
+							data={userData}
+							meta={tableMeta}
+						/>
 					</>
 				) : (
 					<div className="flex w-full items-center justify-center">

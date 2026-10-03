@@ -5,8 +5,13 @@ import { z } from "zod";
 import { db, sql } from "db";
 import { scans, userCommonData } from "db/schema";
 import { eq, and } from "db/drizzle";
-import { userHasPermission } from "@/lib/utils/server/admin";
+import {
+	compareUserPosition,
+	userHasPermission,
+} from "@/lib/utils/server/admin";
 import { PermissionType } from "@/lib/constants/permission";
+import { getUser } from "db/functions";
+import { revalidatePath } from "next/cache";
 
 export const createScan = volunteerAction
 	.schema(
@@ -95,4 +100,36 @@ export const checkInUserToHackathon = volunteerAction
 			.update(userCommonData)
 			.set({ checkinTimestamp: sql`(current_timestamp)` })
 			.where(eq(userCommonData.clerkID, userID));
+	});
+
+export const manualCheckInUser = volunteerAction
+	.schema(z.object({ userID: z.string().min(1) }))
+	.action(async ({ parsedInput: { userID }, ctx: { user } }) => {
+		const userToCheckIn = await getUser(userID);
+
+		if (!userToCheckIn) {
+			throw new Error("User to check in not found.");
+		}
+
+		if (
+			!userHasPermission(user, PermissionType.CHECK_IN) ||
+			compareUserPosition(user, userToCheckIn.role.position) !== 1
+		) {
+			throw new Error(
+				"You do not have permission to check in this user.",
+			);
+		}
+
+		if (userToCheckIn.checkinTimestamp) {
+			throw new Error("User is already checked in.");
+		}
+
+		await db
+			.update(userCommonData)
+			.set({ checkinTimestamp: sql`(current_timestamp)` })
+			.where(eq(userCommonData.clerkID, userID));
+
+		revalidatePath("/admin/users");
+		revalidatePath(`/admin/users/${userID}`);
+		return { success: true };
 	});

@@ -28,6 +28,7 @@ import RemoveUserBanDialog from "@/components/admin/users/RemoveUserBanDialog";
 import { PermissionType } from "@/lib/constants/permission";
 import Restricted from "@/components/Restricted";
 import { getCurrentUser } from "@/lib/utils/server/user";
+import ManualCheckInDialog from "@/components/admin/users/ManualCheckInDialog";
 
 export default async function Page({ params }: { params: { slug: string } }) {
 	const admin = await getCurrentUser();
@@ -110,6 +111,22 @@ export default async function Page({ params }: { params: { slug: string } }) {
 						)}
 					</Restricted>
 
+					{!subject.checkinTimestamp && (
+						<Restricted
+							user={admin}
+							permissions={PermissionType.CHECK_IN}
+							targetRolePosition={subject.role.position}
+							position="higher"
+						>
+							<ManualCheckInDialog
+								name={`${subject.firstName} ${subject.lastName}`}
+								userID={subject.clerkID}
+							>
+								<Button variant={"outline"}>Check In</Button>
+							</ManualCheckInDialog>
+						</Restricted>
+					)}
+
 					{(c.featureFlags.core.requireUsersApproval as boolean) && (
 						<ApproveUserButton
 							userIDToUpdate={subject.clerkID}
@@ -160,6 +177,26 @@ export default async function Page({ params }: { params: { slug: string } }) {
 									/>
 								</div>
 							</Restricted>
+
+							{!subject.checkinTimestamp && (
+								<Restricted
+									user={admin}
+									permissions={PermissionType.CHECK_IN}
+									targetRolePosition={subject.role.position}
+									position="higher"
+								>
+									<div className="flex justify-center px-2 py-1.5">
+										<ManualCheckInDialog
+											name={`${subject.firstName} ${subject.lastName}`}
+											userID={subject.clerkID}
+										>
+											<Button variant={"outline"}>
+												Check In
+											</Button>
+										</ManualCheckInDialog>
+									</div>
+								</Restricted>
+							)}
 
 							{(c.featureFlags.core
 								.requireUsersApproval as boolean) && (

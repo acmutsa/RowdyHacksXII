@@ -10,6 +10,7 @@ import {
 	getPaginationRowModel,
 	ColumnFiltersState,
 	getFilteredRowModel,
+	TableMeta,
 } from "@tanstack/react-table";
 import {
 	Table,
@@ -26,11 +27,13 @@ import { dataTableFuzzyFilter } from "@/lib/utils/client/shared";
 interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];
 	data: TData[];
+	meta?: TableMeta<TData>;
 }
 
 export function DataTable<TData, TValue>({
 	columns,
 	data,
+	meta,
 }: DataTableProps<TData, TValue>) {
 	const [sorting, setSorting] = useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -39,6 +42,7 @@ export function DataTable<TData, TValue>({
 	const table = useReactTable({
 		data,
 		columns,
+		meta,
 		filterFns: {
 			fuzzy: dataTableFuzzyFilter,
 		},

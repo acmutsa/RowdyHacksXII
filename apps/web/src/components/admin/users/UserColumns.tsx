@@ -20,10 +20,13 @@ import { MoreHorizontal, ArrowUpDown, User } from "lucide-react";
 import type { Column, Row } from "@tanstack/react-table";
 import { dataTableFuzzyFilter } from "@/lib/utils/client/shared";
 import { Badge } from "@/components/shadcn/ui/badge";
+import ManualCheckInDialog from "@/components/admin/users/ManualCheckInDialog";
+import { useState } from "react";
 
 const userValidator = createSelectSchema(userCommonData).extend({
 	role: z.object({
 		name: z.string(),
+		position: z.number(),
 	}),
 });
 
@@ -31,6 +34,12 @@ const userValidator = createSelectSchema(userCommonData).extend({
 export type userValidatorType = z.infer<typeof userValidator>;
 
 type UserColumnType = Column<userValidatorType, unknown>;
+
+// Info about the admin viewing the table, passed in through the table's meta
+export type UserTableMeta = {
+	canCheckIn: boolean;
+	viewerRolePosition: number;
+};
 
 export const columns: ColumnDef<userValidatorType>[] = [
 	{
@@ -138,43 +147,83 @@ export const columns: ColumnDef<userValidatorType>[] = [
 	{
 		id: "actions",
 		enableHiding: false,
-		cell: ({ row }) => {
-			return <UserDropDownActions row={row} />;
+		cell: ({ row, table }) => {
+			return (
+				<UserDropDownActions
+					row={row}
+					meta={table.options.meta as UserTableMeta | undefined}
+				/>
+			);
 		},
 	},
 ];
 
-function UserDropDownActions({ row }: { row: Row<userValidatorType> }) {
+function UserDropDownActions({
+	row,
+	meta,
+}: {
+	row: Row<userValidatorType>;
+	meta?: UserTableMeta;
+}) {
 	const user = row.original;
+	const [checkInOpen, setCheckInOpen] = useState(false);
+	// Viewer must have the check in permission and a strictly higher role (lower position number)
+	const canCheckInUser =
+		!!meta?.canCheckIn &&
+		meta.viewerRolePosition < user.role.position &&
+		!user.checkinTimestamp;
+
 	return (
-		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
-				<Button variant="ghost" className="h-8 w-8 p-0">
-					<span className="sr-only">Open menu</span>
-					<MoreHorizontal size={20} />
-				</Button>
-			</DropdownMenuTrigger>
-			<DropdownMenuContent align="end">
-				<DropdownMenuItem>
-					<Link href={`/admin/users/${user.clerkID}`}>View User</Link>
-				</DropdownMenuItem>
-				<DropdownMenuItem
-					onClick={() => navigator.clipboard.writeText(user.clerkID)}
-					className="cursor-pointer"
-				>
-					Copy Clerk ID
-				</DropdownMenuItem>
-				<DropdownMenuItem>
-					<Link
-						href={`mailto:${user.email}`}
-						target="_blank"
-						prefetch={false}
+		<>
+			<DropdownMenu>
+				<DropdownMenuTrigger asChild>
+					<Button variant="ghost" className="h-8 w-8 p-0">
+						<span className="sr-only">Open menu</span>
+						<MoreHorizontal size={20} />
+					</Button>
+				</DropdownMenuTrigger>
+				<DropdownMenuContent align="end">
+					<DropdownMenuItem>
+						<Link href={`/admin/users/${user.clerkID}`}>
+							View User
+						</Link>
+					</DropdownMenuItem>
+					<DropdownMenuItem
+						onClick={() =>
+							navigator.clipboard.writeText(user.clerkID)
+						}
+						className="cursor-pointer"
 					>
-						Email User
-					</Link>
-				</DropdownMenuItem>
-			</DropdownMenuContent>
-		</DropdownMenu>
+						Copy Clerk ID
+					</DropdownMenuItem>
+					<DropdownMenuItem>
+						<Link
+							href={`mailto:${user.email}`}
+							target="_blank"
+							prefetch={false}
+						>
+							Email User
+						</Link>
+					</DropdownMenuItem>
+					{canCheckInUser && (
+						<DropdownMenuItem
+							onSelect={() => setCheckInOpen(true)}
+							className="cursor-pointer"
+						>
+							Check In User
+						</DropdownMenuItem>
+					)}
+				</DropdownMenuContent>
+			</DropdownMenu>
+			{canCheckInUser && (
+				<ManualCheckInDialog
+					name={`${user.firstName} ${user.lastName}`}
+					userID={user.clerkID}
+					open={checkInOpen}
+					onOpenChange={setCheckInOpen}
+				/>
+			)}
+		</>
 	);
 }
 

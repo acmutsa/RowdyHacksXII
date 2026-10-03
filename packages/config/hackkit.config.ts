@@ -86,7 +86,7 @@ const c = {
 		facebook: "https://facebook.com/rowdyhacks",
 		twitter: "https://twitter.com/rowdyhacks",
 		github: "https://github.com/acmutsa",
-		guide: "https://go.rowdyhacks.org/discord",
+		guide: "https://acmutsa.notion.site/RHXII-Survival-Guide-3b5c7f3b37428041a648fab2a82ece3f",
 	},
 	icon: {
 		sm: "/img/logo/rh-logo-black.svg",
